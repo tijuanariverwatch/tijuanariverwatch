@@ -1119,6 +1119,10 @@
             🔁 Smell it again tomorrow? <strong>File another report.</strong> Every separate event is another complaint on record.
           </div>
 
+          <p style="margin-top:18px; font-size:0.78rem; color:#a3a3a3; text-align:center;">
+            This form will reset in <span id="resetCountdown">120</span> seconds so you can file again.
+          </p>
+
         </div>
 
       </div>
@@ -1528,6 +1532,24 @@ Resident of ${loc}`;
     const t = document.getElementById('stat-total');
     if (t.textContent !== '—') t.textContent = (parseInt(t.textContent.replace(/,/g,''))||0)+1;
     document.getElementById('successMsg').scrollIntoView({ behavior:'smooth', block:'center' });
+
+    // Auto-reset after 2 minutes so returning users can file again
+    let secs = 120;
+    const countdownEl = document.getElementById('resetCountdown');
+    const tick = setInterval(() => {
+      secs--;
+      if (countdownEl) countdownEl.textContent = secs;
+      if (secs <= 0) {
+        clearInterval(tick);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('successMsg').style.display = 'none';
+        document.getElementById('complaintForm').style.display = 'block';
+        document.getElementById('complaintForm').reset();
+        document.getElementById('submitBtn').disabled = false;
+        document.getElementById('submitBtn').textContent = 'Submit Report';
+        updateSeverityColor(3);
+      }
+    }, 1000);
   }
 
   const SHEET_ID = '1UbiTP-SThV-fbVv28LW8zjvWMUH7rURkz0VViMAzOiI';
