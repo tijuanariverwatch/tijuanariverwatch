@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Tijuana River Watch</title>
+  <meta name="description" content="Tijuana River Watch is an independent citizen advocacy tool built by South Bay residents. No political affiliation. No agenda. Just pressure.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXFW99ET2Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GXFW99ET2Z');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:      #111111;
+      --ink2:     #333333;
+      --ink3:     #555555;
+      --red:      #991b1b;
+      --red2:     #b91c1c;
+      --red3:     #dc2626;
+      --red-bg:   #fef2f2;
+      --red-border: #fecaca;
+      --white:    #ffffff;
+      --off-white:#f7f7f5;
+      --gray1:    #f0f0ee;
+      --gray2:    #e5e5e3;
+      --gray3:    #a3a3a3;
+      --nav-bg:   #1a1a1a;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--nav-bg);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 58px;
+      border-bottom: 1px solid #2e2e2e;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: var(--red3);
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.4); }
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: #a3a3a3;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red2);
+      color: var(--white) !important;
+      padding: 7px 18px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--red3) !important; }
+    @media (max-width: 660px) { .nav-links { display: none; } }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--nav-bg);
+      color: var(--white);
+      padding: 56px 24px 48px;
+      border-bottom: 3px solid var(--red2);
+      text-align: center;
+    }
+    .page-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red3);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .page-header p {
+      font-size: 1rem;
+      color: #a3a3a3;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    .section { margin-bottom: 56px; }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red2);
+      margin-bottom: 10px;
+    }
+
+    .section h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+    }
+
+    .section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: var(--ink2);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--gray2);
+      margin: 56px 0;
+    }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: var(--red-bg);
+      border-left: 4px solid var(--red2);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .callout p {
+      color: var(--red);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* HOW IT WORKS STEPS */
+    .steps { margin: 24px 0; }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--nav-bg);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+    .step-body { flex: 1; }
+    .step-body strong {
+      display: block;
+      font-size: 0.93rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--ink3);
+      margin: 0;
+    }
+
+    /* FAQ */
+    .faq-item { margin-bottom: 28px; }
+    .faq-item h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink2);
+      margin: 0;
+    }
+
+    /* CTA */
+    .cta-block {
+      background: var(--nav-bg);
+      border-radius: 6px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .cta-block p {
+      font-size: 0.88rem;
+      color: #a3a3a3;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--red2);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 13px 32px;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .cta-btn:hover { background: var(--red3); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--gray2);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink3);
+    }
+    footer a {
+      color: var(--ink3);
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="pulse-dot"></div>
+    Tijuana River Watch
+  </a>
+  <div class="nav-links">
+    <a href="/">Report Now</a>
+    <a href="/about.html" style="color:#fff;">About</a>
+    <a href="/blog/why-we-built-this.html">Why We Built This</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/" class="nav-cta">File a Report →</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">About This Site</div>
+  <h1>Built by South Bay Residents.<br>For South Bay Residents.</h1>
+  <p>No political agenda. No organization behind it. Just people who are tired of the smell, tired of being sick, and tired of being ignored.</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <div class="section-label">Who We Are</div>
+    <h2>Concerned residents. That's it.</h2>
+    <p>Tijuana River Watch was built and is maintained by anonymous residents of South San Diego — Imperial Beach, San Ysidro, Chula Vista, and the surrounding communities that have been living with raw sewage fumes for years.</p>
+    <p>We are not a nonprofit. We are not affiliated with any political party, candidate, law firm, or environmental organization. No one is paying us. No one is directing us. We are not collecting donations.</p>
+    <p>We built this tool because we were tired of watching officials shrug while our neighborhoods smelled like open sewage — and because we believed that if enough people complained loudly enough, in enough inboxes, something would eventually move.</p>
+
+    <div class="callout">
+      <p>This site exists for one reason: to make it harder for officials to ignore the Tijuana River sewage crisis than to fix it.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-label">How It Works</div>
+    <h2>A complaint tool with automated pressure built in.</h2>
+    <p>Every time you file a report, it goes into a live database. The system tracks complaint counts, severity, locations, and health impacts in real time. When thresholds are crossed, automated alert emails go out directly to the officials responsible — elected and appointed, local, state, and federal.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>You file a report.</strong>
+          <p>Takes 60 seconds. You describe what you're experiencing — odor intensity, duration, location, health symptoms. No account required.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>The system logs it.</strong>
+          <p>Your report is stored and counted alongside every other submission. The live stats bar on the homepage updates automatically.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Thresholds trigger alerts.</strong>
+          <p>When complaint volume crosses set thresholds, automated email alerts go out to a curated list of officials — from city councilmembers to EPA Region 9, from IBWC to congressional representatives.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Weekly digests go to the full list.</strong>
+          <p>Every Monday, a summary of the prior week's complaints — total reports, average severity, top impacted neighborhoods — goes to the full contact list, including advocacy organizations and environmental journalists.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>The emails are written to be direct. They include complaint counts, severity averages, affected communities, and specific demands — including the immediate repair of the Saturn Boulevard Pipe Extension. They are not polite requests. They are documented evidence of a public health failure landing directly in official inboxes.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-label">Political Independence</div>
+    <h2>This is not a partisan issue. We treat it that way.</h2>
+    <p>The sewage crisis has been mismanaged by officials from both parties, at every level of government, for decades. We are not here to score political points. We are here to create accountability — regardless of who is in office.</p>
+    <p>Our contact list includes Democrats and Republicans, city and county officials, state and federal agencies. If you have jurisdiction over this problem, you are on the list. Party affiliation is irrelevant.</p>
+    <p>We do not endorse candidates. We do not coordinate with campaigns. We have no interest in any election outcome beyond having officials in place who will act on the Tijuana River crisis.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-label">FAQ</div>
+    <h2>Common questions.</h2>
+
+    <div class="faq-item">
+      <h3>Does filing a complaint actually do anything?</h3>
+      <p>It depends. One complaint does little. Five hundred complaints create a documented record that officials cannot plausibly ignore. The goal of this site is volume and persistence — not individual reports, but an unbroken stream of documented community impact landing in official inboxes over months.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is my personal information shared with anyone?</h3>
+      <p>No. Your name and email address (both optional) are never included in the alert emails sent to officials. Only anonymous aggregate data is shared — total complaints, average severity, top impacted neighborhoods. See our <a href="/legal/privacy-policy.html">Privacy Policy</a> for full details.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How often should I report?</h3>
+      <p>Every time. If you smell it today, report it today. If you smell it again tomorrow, report it tomorrow. Each submission is a separate data point. Repeated reporting by the same neighborhood over consecutive days builds a far more compelling record than a single high-volume day.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Who is actually running this site?</h3>
+      <p>South Bay residents who prefer to stay anonymous. We're not trying to build a brand. We're trying to fix a sewage problem. If you want to reach us, use the <a href="/contact.html">Contact page</a>.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I help?</h3>
+      <p>Yes. Share the site. Tell your neighbors. Post it on Nextdoor, in your HOA group, at your kids' school. The more people reporting consistently, the more pressure the system generates. That's the entire mechanism.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h2>The site works when people use it.</h2>
+    <p>File a report every time you're affected. Takes one minute. Creates documented pressure that officials can't ignore indefinitely.</p>
+    <a href="/" class="cta-btn">File a Report Now →</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/">Home</a>
+  <a href="/about.html">About</a>
+  <a href="/blog/why-we-built-this.html">Blog</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/legal/privacy-policy.html">Privacy Policy</a>
+  <a href="/legal/terms-of-use.html">Terms of Use</a>
+</footer>
+
+</body>
+</html>
