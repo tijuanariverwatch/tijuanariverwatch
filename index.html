@@ -1521,8 +1521,15 @@ Resident of ${loc}`;
       const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
       const rows = json.table.rows || [];
       const now = Date.now();
-      const twelveH = rows.filter(r => { try { return new Date(r.c[0]?.v) > new Date(now - 43200000); } catch(e){ return false; } }).length;
-      const sevenD  = rows.filter(r => { try { return new Date(r.c[0]?.v) > new Date(now - 604800000); } catch(e){ return false; } }).length;
+      function parseGvizDate(v) {
+        if (!v) return null;
+        // gviz returns "Date(2026,3,20,10,30,0)" — month is 0-indexed
+        const m = String(v).match(/Date\((\d+),(\d+),(\d+),(\d+),(\d+),(\d+)\)/);
+        if (m) return new Date(+m[1], +m[2], +m[3], +m[4], +m[5], +m[6]).getTime();
+        return new Date(v).getTime();
+      }
+      const twelveH = rows.filter(r => { try { const t = parseGvizDate(r.c[0]?.v); return t && t > now - 43200000; } catch(e){ return false; } }).length;
+      const sevenD  = rows.filter(r => { try { const t = parseGvizDate(r.c[0]?.v); return t && t > now - 604800000; } catch(e){ return false; } }).length;
       document.getElementById('stat-total').textContent   = rows.length.toLocaleString();
       document.getElementById('stat-week').textContent    = sevenD;
       document.getElementById('stat-tonight').textContent = twelveH;
