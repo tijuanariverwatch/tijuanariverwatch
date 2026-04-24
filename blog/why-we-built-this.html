@@ -272,6 +272,39 @@
       text-decoration: none;
     }
     footer a:hover { color: var(--ink); }
+
+    /* POST NAVIGATION */
+    .post-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-top: 1px solid var(--gray2);
+    }
+    .post-nav-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 46%;
+    }
+    .post-nav-item.next { text-align: right; align-items: flex-end; }
+    .post-nav-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray3);
+    }
+    .post-nav-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink2);
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .post-nav-title:hover { color: var(--red2); }
   </style>
 </head>
 <body>
@@ -284,7 +317,7 @@
   <div class="nav-links">
     <a href="/">Report Now</a>
     <a href="/about.html">About</a>
-    <a href="/blog/why-we-built-this.html" style="color:#fff;">Why We Built This</a>
+    <a href="/blog/" style="color:#fff;">Blog</a>
     <a href="/contact.html">Contact</a>
     <a href="/" class="nav-cta">File a Report →</a>
   </div>
@@ -294,7 +327,7 @@
   <div class="article-header-inner">
     <div class="post-meta">
       <span class="post-tag">Essay</span>
-      <span class="post-date">April 2026</span>
+      <span class="post-date">Monday, April 20, 2026</span>
     </div>
     <h1>Why We Built a Sewage Complaint Machine</h1>
     <p class="deck">The Tijuana River crisis has been documented, reported, and ignored for over two decades. We didn't build another report. We built something that puts pressure in places pressure has been missing.</p>
@@ -387,11 +420,20 @@
 
 </article>
 
+<nav class="post-nav">
+  <div class="post-nav-item">
+    <!-- first post, no previous -->
+  </div>
+  <div class="post-nav-item next">
+    <span class="post-nav-label">Next Post →</span>
+    <a class="post-nav-title" href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">San Diego Ranked 5th Worst in the Nation for Air Quality</a>
+  </div>
+</nav>
+
 <footer>
   <a href="/">Home</a>
   <a href="/about.html">About</a>
-  <a href="/blog/why-we-built-this.html">Why We Built This</a>
-  <a href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">SD Air Quality Report</a>
+  <a href="/blog/">Blog</a>
   <a href="/contact.html">Contact</a>
   <a href="/privacy-policy.html">Privacy Policy</a>
   <a href="/terms-of-use.html">Terms of Use</a>
