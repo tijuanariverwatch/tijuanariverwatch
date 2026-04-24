@@ -552,7 +552,7 @@
     }
     .email-provider-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
     .provider-btn {
@@ -571,6 +571,14 @@
     .provider-btn--gmail   { background: #fff; color: #333; }
     .provider-btn--outlook { background: #0078d4; color: #fff; }
     .provider-btn--yahoo   { background: #6001d2; color: #fff; }
+    .provider-btn--apple   { background: #1c1c1e; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .mobile-mail-note { display:none; margin: 8px auto 0; font-size:0.78rem; color:#facc15; text-align:center; }
+    @media (max-width: 600px) {
+      .email-provider-grid { grid-template-columns: 1fr 1fr; }
+      .provider-btn--gmail, .provider-btn--outlook, .provider-btn--yahoo { display: none; }
+      .provider-btn--apple { grid-column: 1 / -1; font-size: 1rem; padding: 14px; }
+      .mobile-mail-note { display: block; }
+    }
     .copy-section {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
@@ -854,7 +862,7 @@
 
 <!-- ALERT BANNER -->
 <div class="alert-banner">
-  <strong>If the stench hits — report it.</strong> Every report fires automated alerts to elected officials on both sides of the border. File one each time it happens.
+  <strong>If the stench hits — report it.</strong> Every report adds to the record. Overnight and weekly emails go automatically to officials on both sides of the border. File one each time it happens.
 </div>
 
 <!-- HERO -->
@@ -1099,10 +1107,12 @@
               <a id="gmailBtn" href="#" target="_blank" class="provider-btn provider-btn--gmail">Gmail</a>
               <a id="outlookBtn" href="#" target="_blank" class="provider-btn provider-btn--outlook">Outlook / Hotmail</a>
               <a id="yahooBtn" href="#" target="_blank" class="provider-btn provider-btn--yahoo">Yahoo Mail</a>
+              <a id="appleMailBtn" href="#" class="provider-btn provider-btn--apple">Apple Mail / Mail App</a>
             </div>
+            <p class="mobile-mail-note">📱 On mobile? Tap <strong>Apple Mail / Mail App</strong> — it opens your phone's mail app directly.</p>
             <p class="email-note" style="margin:12px auto;">Click your email provider — the letter opens pre-written and pre-addressed. Just hit Send.</p>
             <div class="copy-section">
-              <p class="copy-section-label">Using Apple Mail, iCloud, or another provider?</p>
+              <p class="copy-section-label">Using iCloud Mail or another provider?</p>
               <div class="copy-row">
                 <span class="copy-row-text" id="copyRecipientsText">Loading...</span>
                 <button onclick="copyRecipients()" id="copyRecipientsBtn" class="copy-mini-btn">Copy Addresses</button>
@@ -1137,7 +1147,7 @@
   <div class="section-inner">
     <div class="section-label">The System</div>
     <h2 class="section-title">How It Works</h2>
-    <p class="section-desc">Every report feeds a real-time database. Complaint volume triggers escalating notifications — the worse the event, the more officials hear about it, with your data.</p>
+    <p class="section-desc">Every report feeds a real-time database. Complaint data is sent to officials on an overnight and weekly schedule — building a permanent, documented record that lands directly in their inboxes., with your data.</p>
 
     <div class="steps-grid">
       <div class="step-card">
@@ -1152,8 +1162,8 @@
       </div>
       <div class="step-card">
         <div class="step-num">03</div>
-        <h3>Thresholds Trigger Alerts</h3>
-        <p>Complaint volume determines who gets notified and how widely. More reports means a broader blast.</p>
+        <h3>Overnight &amp; Weekly Reports</h3>
+        <p>Nightly summaries go to local officials every morning. Full digests go to every official, agency, and media contact every Monday. and how widely. More reports means a broader blast.</p>
       </div>
       <div class="step-card">
         <div class="step-num">04</div>
@@ -1168,35 +1178,28 @@
     </div>
 
     <div class="threshold-callout">
-      <div class="threshold-item">
-        <div class="threshold-icon">🟡</div>
-        <div>
-          <h4>5+ reports in 1 hour</h4>
-          <p>City and county officials notified — Imperial Beach, San Diego, County Supervisors, Environmental Health.</p>
+        <div class="threshold-item">
+          <div class="threshold-icon">🌙</div>
+          <div>
+            <h4>Nightly (7am daily)</h4>
+            <p>An overnight summary of all reports from 7pm–7am goes to local officials — County Supervisor, Environmental Health, City Clerks, and Water Board.</p>
+          </div>
+        </div>
+        <div class="threshold-item">
+          <div class="threshold-icon">📅</div>
+          <div>
+            <h4>Weekly (Every Monday)</h4>
+            <p>Full weekly digest to every official on the list — Congress, Senate, EPA, IBWC, Governor's office, Mexico authorities, environmental media, and advocacy groups.</p>
+          </div>
+        </div>
+        <div class="threshold-item">
+          <div class="threshold-icon">✉️</div>
+          <div>
+            <h4>Your Email — Immediate</h4>
+            <p>Use the Gmail, Apple Mail, or Outlook button after submitting to send a direct complaint from your own account. Emails from real constituents carry extra weight.</p>
+          </div>
         </div>
       </div>
-      <div class="threshold-item">
-        <div class="threshold-icon">🟠</div>
-        <div>
-          <h4>10+ reports in 2 hours</h4>
-          <p>All US officials notified — both Congressmen, both Senators, EPA Region 9, IBWC, State Water Board.</p>
-        </div>
-      </div>
-      <div class="threshold-item">
-        <div class="threshold-icon">🔴</div>
-        <div>
-          <h4>25+ reports in 12 hours</h4>
-          <p>Full blast — all officials including EPA Administrator, Mexico officials (Tijuana Mayor, Baja Governor, CESPT, CONAGUA), and media watchdogs.</p>
-        </div>
-      </div>
-      <div class="threshold-item">
-        <div class="threshold-icon">📅</div>
-        <div>
-          <h4>Daily 8 AM + Weekly Monday</h4>
-          <p>Regardless of thresholds, all officials receive overnight summaries and weekly trend data.</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -1419,7 +1422,7 @@
     'MayorToddGloria@SanDiego.gov',
     'SDBranch@waterboards.ca.gov',
     'R9-Press@epa.gov',
-    'ibwc.info@ibwc.gov',
+    'pao@ibwc.gov',
     'senator@padilla.senate.gov',
   ].join(',');
 
@@ -1480,6 +1483,13 @@ Resident of ${loc}`;
     const mailtoUrl = 'mailto:' + EMAIL_RECIPIENTS
       + '?subject=' + encodeURIComponent(savedEmailSubject)
       + '&body=' + encodeURIComponent(savedEmailBody);
+    document.getElementById('appleMailBtn').href = mailtoUrl;
+
+    // On mobile, swap Gmail to mailto: to avoid new-account flow
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      document.getElementById('gmailBtn').href = mailtoUrl;
+    }
+
     // Populate the email preview
     document.getElementById('previewTo').textContent = EMAIL_RECIPIENTS;
     document.getElementById('copyRecipientsText').textContent = EMAIL_RECIPIENTS;
