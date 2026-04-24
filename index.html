@@ -552,7 +552,7 @@
     }
     .email-provider-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 10px;
     }
     .provider-btn {
@@ -571,13 +571,10 @@
     .provider-btn--gmail   { background: #fff; color: #333; }
     .provider-btn--outlook { background: #0078d4; color: #fff; }
     .provider-btn--yahoo   { background: #6001d2; color: #fff; }
-    .provider-btn--apple   { background: #1c1c1e; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-    .mobile-mail-note { display:none; margin: 8px auto 0; font-size:0.78rem; color:#facc15; text-align:center; }
+    .provider-btn--apple   { background: #555555; color: #fff; display: none; }
     @media (max-width: 600px) {
-      .email-provider-grid { grid-template-columns: 1fr 1fr; }
-      .provider-btn--gmail, .provider-btn--outlook, .provider-btn--yahoo { display: none; }
-      .provider-btn--apple { grid-column: 1 / -1; font-size: 1rem; padding: 14px; }
-      .mobile-mail-note { display: block; }
+      .email-provider-grid { grid-template-columns: 1fr; }
+      .provider-btn--apple { display: flex; }
     }
     .copy-section {
       background: rgba(255,255,255,0.06);
@@ -855,7 +852,7 @@
     <a href="#how-it-works">How It Works</a>
     <a href="#officials">Officials</a>
     <a href="/about.html">About</a>
-    <a href="/blog/why-we-built-this.html">Blog</a>
+    <a href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">Blog</a>
   </div>
   <a href="#report" class="nav-cta">File a Report</a>
 </nav>
@@ -1107,15 +1104,19 @@
               <a id="gmailBtn" href="#" target="_blank" class="provider-btn provider-btn--gmail">Gmail</a>
               <a id="outlookBtn" href="#" target="_blank" class="provider-btn provider-btn--outlook">Outlook / Hotmail</a>
               <a id="yahooBtn" href="#" target="_blank" class="provider-btn provider-btn--yahoo">Yahoo Mail</a>
-              <a id="appleMailBtn" href="#" onclick="openAppleMail(event)" class="provider-btn provider-btn--apple">Apple Mail / Mail App</a>
+              <button onclick="openAppleMail(event)" id="appleMailBtn" class="provider-btn provider-btn--apple">Apple Mail</button>
             </div>
-            <p class="mobile-mail-note">📱 On mobile? Tap <strong>Apple Mail / Mail App</strong> — it opens your phone's mail app directly.</p>
+            
             <p class="email-note" style="margin:12px auto;">Click your email provider — the letter opens pre-written and pre-addressed. Just hit Send.</p>
             <div class="copy-section">
               <p class="copy-section-label">Using iCloud Mail or another provider?</p>
               <div class="copy-row">
                 <span class="copy-row-text" id="copyRecipientsText">Loading...</span>
                 <button onclick="copyRecipients()" id="copyRecipientsBtn" class="copy-mini-btn">Copy Addresses</button>
+              </div>
+              <div class="copy-row" style="margin-top:8px;">
+                <span class="copy-row-text" id="copySubjectText">Subject line</span>
+                <button onclick="copySubject()" id="copySubjectBtn" class="copy-mini-btn">Copy Subject</button>
               </div>
               <div class="copy-row" style="margin-top:8px;">
                 <span class="copy-row-text">Pre-written complaint letter</span>
@@ -1387,7 +1388,7 @@
 <footer>
   <p><strong>Tijuana River Crisis Alert System</strong> — Built by and for residents of Imperial Beach, Coronado, San Ysidro, San Diego, and Chula Vista.</p>
   <p style="margin-top:6px;">Citizen advocacy tool. All reports are used solely to document conditions and apply pressure to elected officials.</p>
-  <p style="margin-top:6px;"><a href="/about.html">About</a> · <a href="/blog/why-we-built-this.html">Blog</a> · <a href="/contact.html">Contact</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms-of-use.html">Terms of Use</a> · &copy; 2026 Tijuana River Watch</p>
+  <p style="margin-top:6px;"><a href="/about.html">About</a> · <a href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">SD Air Quality Report</a> · <a href="/blog/why-we-built-this.html">Why We Built This</a> · <a href="/contact.html">Contact</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms-of-use.html">Terms of Use</a> · &copy; 2026 Tijuana River Watch</p>
 </footer>
 
 <script>
@@ -1420,10 +1421,10 @@
   const EMAIL_RECIPIENTS = [
     'cityclerk@imperialbeachca.gov',
     'MayorToddGloria@SanDiego.gov',
-    'SDBranch@waterboards.ca.gov',
-    'R9-Press@epa.gov',
+    'rb9_questions@waterboards.ca.gov',
+    'giarmoleo.julia@epa.gov',
     'pao@ibwc.gov',
-    'senator@padilla.senate.gov',
+    'casework@padilla.senate.gov',
   ].join(',');
 
   function openAppleMail(e) {
@@ -1490,6 +1491,13 @@ Resident of ${loc}`;
       + '&body=' + encodeURIComponent(savedEmailBody);
     document.getElementById('yahooBtn').href = yahooUrl;
 
+    // Apple Mail — mailto link (mobile-only)
+    const mailtoUrl = 'mailto:' + EMAIL_RECIPIENTS
+      + '?subject=' + encodeURIComponent(savedEmailSubject)
+      + '&body='    + encodeURIComponent(savedEmailBody);
+    window._mailtoUrl = mailtoUrl;
+    document.getElementById('appleMailBtn').onclick = function(e) { openAppleMail(e); };
+
     const mailtoUrl = 'mailto:' + EMAIL_RECIPIENTS
       + '?subject=' + encodeURIComponent(savedEmailSubject)
       + '&body=' + encodeURIComponent(savedEmailBody);
@@ -1524,6 +1532,15 @@ Resident of ${loc}`;
     });
   }
 
+  function copySubject() {
+    if (!savedEmailSubject) { alert('Please submit the form first.'); return; }
+    navigator.clipboard.writeText(savedEmailSubject).then(() => {
+      const btn = document.getElementById('copySubjectBtn');
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = 'Copy Subject', 2500);
+    });
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
@@ -1541,6 +1558,24 @@ Resident of ${loc}`;
         await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data });
       } catch(err) {
         console.warn('Submission error (non-fatal):', err);
+      }
+
+      // Confirmation email if checked
+      const userEmail = data.get('entry.30396298');
+      const sendCopy  = data.get('send_copy');
+      if (sendCopy === 'yes' && userEmail) {
+        const confirmParams = new URLSearchParams({
+          send_copy:          'yes',
+          'entry.30396298':   userEmail,
+          'entry.1693083561': data.get('entry.1693083561') || '',
+          'entry.1490422776': data.get('entry.1490422776') || '',
+          'entry.907203543':  data.get('entry.907203543')  || '',
+          'entry.247287864':  data.get('entry.247287864')  || '',
+          'entry.717805650':  data.get('entry.717805650')  || '',
+        });
+        data.getAll('entry.1956466788').forEach(s => confirmParams.append('entry.1956466788', s));
+        fetch(SCRIPT_URL + '?' + confirmParams.toString(), { mode: 'no-cors' })
+          .catch(err => console.warn('Confirmation email error (non-fatal):', err));
       }
     }
 
