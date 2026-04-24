@@ -281,16 +281,18 @@
     .post-nav {
       max-width: 720px;
       margin: 0 auto;
-      padding: 32px 24px 48px;
+      padding: 32px 24px 64px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 32px;
     }
     .post-nav-item {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      max-width: 46%;
+      flex: 1;
+      min-width: 0;
     }
     .post-nav-item.next { text-align: right; align-items: flex-end; }
     .post-nav-label {
@@ -303,11 +305,13 @@
     }
     .post-nav-label:hover { color: #999999; }
     .post-nav-title {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--white);
       text-decoration: none;
-      line-height: 1.4;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .post-nav-title:hover { color: var(--red3); }
   </style>
@@ -355,7 +359,7 @@
 
   <p>Individual complaints to government agencies are easy to ignore. A single call to a city hotline gets logged and forgotten. An email to a representative's office gets read by a staffer and filed. A complaint to the EPA Region 9 office disappears into a database that nobody outside the agency ever sees.</p>
 
-  <p>The machinery of government is optimized for absorbing complaints without acting on them. Not because everyone in it is indifferent — though some are — but because the structure rewards delay. It costs a politician very little to do nothing about a sewage problem in a coastal community. It costs them a lot to push for expensive infrastructure repairs, international negotiations, or forcement actions against powerful agencies.</p>
+  <p>The machinery of government is optimized for absorbing complaints without acting on them. Not because everyone in it is indifferent — though some are — but because the structure rewards delay. It costs a politician very little to do nothing about a sewage problem in a coastal community. It costs them a lot to push for expensive infrastructure repairs, international negotiations, or enforcement actions against powerful agencies.</p>
 
   <div class="pullquote">
     <p>"The structure rewards delay. It costs a politician very little to do nothing about a sewage problem."</p>
@@ -385,7 +389,7 @@
 
   <h2>Why Report Every Time</h2>
 
-  <p>One of the most important things you can do with this tool is use it every time you're affected — dot just on the worst days.</p>
+  <p>One of the most important things you can do with this tool is use it every time you're affected — not just on the worst days.</p>
 
   <p>A single spike of complaints on a bad week creates a blip. Three hundred complaints spread across sixty days, with consistent severity reporting and overlapping neighborhoods, creates a pattern. Patterns are harder to dismiss than spikes. They demonstrate that this is a persistent, chronic problem — not an isolated event that can be attributed to weather or a temporary malfunction.</p>
 
