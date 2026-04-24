@@ -308,21 +308,23 @@
     /* POST NAVIGATION */
     .post-nav-wrap {
       background: var(--nav-bg);
-      border-top: 1px solid #2e2e2e;
+    2 border-top: 1px solid #2e2e2e;
     }
     .post-nav {
       max-width: 720px;
       margin: 0 auto;
-      padding: 32px 24px 48px;
+      padding: 32px 24px 64px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 32px;
     }
     .post-nav-item {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      max-width: 46%;
+      flex: 1;
+      min-width: 0;
     }
     .post-nav-item.next { text-align: right; align-items: flex-end; }
     .post-nav-label {
@@ -335,11 +337,13 @@
     }
     .post-nav-label:hover { color: #999999; }
     .post-nav-title {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--white);
       text-decoration: none;
-      line-height: 1.4;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .post-nav-title:hover { color: var(--red3); }
   </style>
