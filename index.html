@@ -1107,7 +1107,7 @@
               <a id="gmailBtn" href="#" target="_blank" class="provider-btn provider-btn--gmail">Gmail</a>
               <a id="outlookBtn" href="#" target="_blank" class="provider-btn provider-btn--outlook">Outlook / Hotmail</a>
               <a id="yahooBtn" href="#" target="_blank" class="provider-btn provider-btn--yahoo">Yahoo Mail</a>
-              <a id="appleMailBtn" href="#" class="provider-btn provider-btn--apple">Apple Mail / Mail App</a>
+              <a id="appleMailBtn" href="#" onclick="openAppleMail(event)" class="provider-btn provider-btn--apple">Apple Mail / Mail App</a>
             </div>
             <p class="mobile-mail-note">📱 On mobile? Tap <strong>Apple Mail / Mail App</strong> — it opens your phone's mail app directly.</p>
             <p class="email-note" style="margin:12px auto;">Click your email provider — the letter opens pre-written and pre-addressed. Just hit Send.</p>
@@ -1426,7 +1426,13 @@
     'senator@padilla.senate.gov',
   ].join(',');
 
-  function buildEmail(data) {
+  function openAppleMail(e) {
+    e.preventDefault();
+    if (!window._mailtoUrl) { alert('Please submit the form first.'); return; }
+    window.location.href = window._mailtoUrl;
+  }
+
+    function buildEmail(data) {
     const loc  = data.get('entry.1490422776') || 'South San Diego';
     const sev  = data.get('entry.907203543')  || '';
     const dur  = data.get('entry.247287864')  || '';
@@ -1484,6 +1490,7 @@ Resident of ${loc}`;
       + '?subject=' + encodeURIComponent(savedEmailSubject)
       + '&body=' + encodeURIComponent(savedEmailBody);
     document.getElementById('appleMailBtn').href = mailtoUrl;
+    window._mailtoUrl = mailtoUrl;
 
     // On mobile, swap Gmail to mailto: to avoid new-account flow
     if (/Mobi|Android/i.test(navigator.userAgent)) {
