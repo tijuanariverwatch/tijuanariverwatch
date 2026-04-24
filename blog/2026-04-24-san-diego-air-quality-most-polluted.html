@@ -306,14 +306,17 @@
     footer a:hover { color: var(--ink); }
 
     /* POST NAVIGATION */
+    .post-nav-wrap {
+      background: var(--nav-bg);
+      border-top: 1px solid #2e2e2e;
+    }
     .post-nav {
       max-width: 720px;
       margin: 0 auto;
-      padding: 32px 24px 64px;
+      padding: 32px 24px 48px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      border-top: 1px solid var(--gray2);
     }
     .post-nav-item {
       display: flex;
@@ -327,16 +330,18 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray3);
+      color: #666666;
+      text-decoration: none;
     }
+    .post-nav-label:hover { color: #999999; }
     .post-nav-title {
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--ink2);
+      color: var(--white);
       text-decoration: none;
       line-height: 1.4;
     }
-    .post-nav-title:hover { color: var(--red2); }
+    .post-nav-title:hover { color: var(--red3); }
   </style>
 </head>
 <body>
@@ -449,15 +454,17 @@
 
 </article>
 
+<div class="post-nav-wrap">
 <nav class="post-nav">
   <div class="post-nav-item">
-    <span class="post-nav-label">← Previous Post</span>
+    <a class="post-nav-label" href="/blog/why-we-built-this.html">← Previous Post</a>
     <a class="post-nav-title" href="/blog/why-we-built-this.html">Why We Built a Sewage Complaint Machine</a>
   </div>
   <div class="post-nav-item next">
     <!-- no next post yet -->
   </div>
 </nav>
+</div>
 
 <footer>
   <a href="/">Home</a>
