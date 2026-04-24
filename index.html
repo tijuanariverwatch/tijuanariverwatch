@@ -1429,7 +1429,11 @@
   function openAppleMail(e) {
     e.preventDefault();
     if (!window._mailtoUrl) { alert('Please submit the form first.'); return; }
-    window.location.href = window._mailtoUrl;
+    const a = document.createElement('a');
+        a.href = window._mailtoUrl;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
   }
 
     function buildEmail(data) {
