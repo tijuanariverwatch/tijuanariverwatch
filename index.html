@@ -1754,7 +1754,11 @@
     const dur  = data.get('entry.247287864')  || '';
     const sym  = data.getAll('entry.1956466788');
     const vuln = data.get('entry.871476581')  || '';
-    const name = data.get('entry.1693083561') || 'A Concerned Resident';
+    const name    = data.get('entry.1693083561') || 'A Concerned Resident';
+    const comment = (data.get('entry.717805650') || '').trim();
+
+    // Save form data for email tracking on button click
+    window._savedFormData = data;
 
     savedEmailSubject = `Sewage Complaint — ${loc} — ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
 
@@ -1778,7 +1782,7 @@ I am requesting:
 3. Public acknowledgment of this event and its health impact
 4. Enforcement action against responsible parties
 
-This will not be my last complaint. I will keep filing until this is resolved.
+This will not be my last complaint. I will keep filing until this is resolved.${comment ? `\n\nAdditional statement from me:\n"${comment}"` : ''}
 
 Sincerely,
 ${name}
@@ -1789,25 +1793,28 @@ Resident of ${loc}`;
       + '&su=' + encodeURIComponent(savedEmailSubject)
       + '&body=' + encodeURIComponent(savedEmailBody);
     document.getElementById('gmailBtn').href = gmailUrl;
+    document.getElementById('gmailBtn').onclick = () => trackEmailSent();
 
     const outlookUrl = 'https://outlook.live.com/mail/0/deeplink/compose?'
       + 'to=' + encodeURIComponent(EMAIL_RECIPIENTS)
       + '&subject=' + encodeURIComponent(savedEmailSubject)
       + '&body=' + encodeURIComponent(savedEmailBody);
     document.getElementById('outlookBtn').href = outlookUrl;
+    document.getElementById('outlookBtn').onclick = () => trackEmailSent();
 
     const yahooUrl = 'https://compose.mail.yahoo.com/?'
       + 'to=' + encodeURIComponent(EMAIL_RECIPIENTS)
       + '&subject=' + encodeURIComponent(savedEmailSubject)
       + '&body=' + encodeURIComponent(savedEmailBody);
     document.getElementById('yahooBtn').href = yahooUrl;
+    document.getElementById('yahooBtn').onclick = () => trackEmailSent();
 
     // Apple Mail — mailto link (mobile-only)
     const mailtoUrl = 'mailto:' + EMAIL_RECIPIENTS
       + '?subject=' + encodeURIComponent(savedEmailSubject)
       + '&body='    + encodeURIComponent(savedEmailBody);
     window._mailtoUrl = mailtoUrl;
-    document.getElementById('appleMailBtn').onclick = function(e) { openAppleMail(e); };
+    document.getElementById('appleMailBtn').onclick = function(e) { openAppleMail(e); trackEmailSent(); };
     document.getElementById('appleMailBtn').href = mailtoUrl;
 
     // On mobile, swap Gmail to mailto: to avoid new-account flow
@@ -1820,6 +1827,23 @@ Resident of ${loc}`;
     document.getElementById('copyRecipientsText').textContent = EMAIL_RECIPIENTS;
     document.getElementById('previewSubject').textContent = savedEmailSubject;
     document.getElementById('previewBody').textContent = savedEmailBody;
+  }
+
+  // Fires a lightweight request to Apps Script when a resident clicks an email
+  // provider button — triggers the per-submission forward to direct officials.
+  function trackEmailSent() {
+    if (!SCRIPT_URL || !window._savedFormData) return;
+    try {
+      const d = window._savedFormData;
+      const params = new URLSearchParams({ action: 'email_sent' });
+      [
+        'entry.1490422776','entry.907203543','entry.247287864',
+        'entry.871476581','entry.717805650','entry.1693083561','entry.30396298',
+      ].forEach(k => { const v = d.get(k); if (v) params.append(k, v); });
+      d.getAll('entry.1956466788').forEach(v => params.append('entry.1956466788', v));
+      fetch(SCRIPT_URL + '?' + params.toString(), { mode: 'no-cors' })
+        .catch(() => {});
+    } catch(err) { /* non-fatal */ }
   }
 
   function copyLetter() {
