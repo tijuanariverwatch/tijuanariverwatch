@@ -1947,7 +1947,7 @@ Resident of ${loc}`;
   // Rate: $400,000/day = $4.6296.../second
   const ECON_START   = new Date('2021-12-08T00:00:00Z');
   const ECON_PER_DAY = 400000;
-  const ECON_PER_MS  = ECON_PER_DAY / 864000000;
+  const ECON_PER_MS  = ECON_PER_DAY / 86400000;
 
   function daysBetween(startDateStr, now) {
     const start = new Date(startDateStr + 'T00:00:00Z');
@@ -1976,7 +1976,7 @@ Resident of ${loc}`;
     if (!box) return;
     const isOpen = box.classList.contains('open');
     box.classList.toggle('open', !isOpen);
-    btn.textContent = isOpen ? 'How we calculate this ↓' : 'Hide methodology ₑ';
+    btn.textContent = isOpen ? 'How we calculate this ↓' : 'Hide methodology ↑';
   }
 
   updateBeachCounters();
