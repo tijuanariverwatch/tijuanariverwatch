@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tijuana River Crisis — Report Now</title>
+  <title>Tijuana River Crisis â Report Now</title>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXFW99ET2Z"></script>
   <script>
@@ -42,7 +42,7 @@
       color: var(--ink);
     }
 
-    /* ── NAVBAR ── */
+    /* ââ NAVBAR ââ */
     nav {
       background: var(--nav-bg);
       padding: 0 32px;
@@ -102,7 +102,7 @@
     .nav-cta:hover { background: var(--red3); }
     @media (max-width: 660px) { .nav-links { display: none; } }
 
-    /* ── ALERT BANNER ── */
+    /* ââ ALERT BANNER ââ */
     .alert-banner {
       background: var(--red);
       color: #fecaca;
@@ -114,7 +114,7 @@
     }
     .alert-banner strong { color: var(--white); }
 
-    /* ── HERO ── */
+    /* ââ HERO ââ */
     .hero {
       background: var(--nav-bg);
       color: var(--white);
@@ -132,7 +132,7 @@
       top: -7.5%;
       z-index: 0;
       pointer-events: none;
-      background-image: url('assets/images/satellite-map.jpg');
+      background-image: url('assets/images/tijuana-river-watch-header-background.jpg');
       background-size: cover;
       background-position: center center;
       opacity: 0.75;
@@ -188,7 +188,7 @@
     }
     .hero-cta:hover { background: var(--red3); transform: translateY(-1px); }
 
-    /* ── STATS BAR ── */
+    /* ââ STATS BAR ââ */
     .stats-bar {
       background: var(--off-white);
       border-bottom: 1px solid var(--gray2);
@@ -220,7 +220,7 @@
       margin-top: 5px;
     }
 
-    /* ── SECTIONS ── */
+    /* ââ SECTIONS ââ */
     .section { padding: 64px 24px; }
     .section-alt { background: var(--off-white); }
     .section-inner { max-width: 1060px; margin: 0 auto; }
@@ -250,7 +250,7 @@
       margin-bottom: 40px;
     }
 
-    /* ── FORM ── */
+    /* ââ FORM ââ */
     .form-card {
       background: var(--white);
       border: 1px solid var(--gray2);
@@ -404,7 +404,7 @@
     .form-divider { border: none; border-top: 1px solid var(--gray2); margin: 24px 0; }
     .form-optional-note { font-size: 0.75rem; color: var(--gray3); margin-bottom: 18px; }
 
-    /* ── PROGRESSIVE DISCLOSURE ── */
+    /* ââ PROGRESSIVE DISCLOSURE ââ */
     .form-required-hint {
       font-size: 0.72rem;
       color: var(--gray3);
@@ -649,7 +649,7 @@
       font-weight: 600;
     }
 
-    /* ── AIR QUALITY SECTION ── */
+    /* ââ AIR QUALITY SECTION ââ */
 
     .aq-thresholds {
       display: flex;
@@ -702,7 +702,7 @@
     }
     .aq-source a { color: var(--ink3); }
 
-    /* ── HOW IT WORKS ── */
+    /* ââ HOW IT WORKS ââ */
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
@@ -750,7 +750,7 @@
     .threshold-item h4 { font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
     .threshold-item p { font-size: 0.75rem; color: var(--ink3); line-height: 1.55; }
 
-    /* ── THE COST SECTION ── */
+    /* ââ THE COST SECTION ââ */
     .cost-section {
       background: #0f172a;
       color: #fff;
@@ -946,7 +946,7 @@
     }
     .meth-verify a { color: #475569; }
 
-    /* ── OFFICIALS ── */
+    /* ââ OFFICIALS ââ */
     .officials-header {
       display: flex;
       align-items: flex-start;
@@ -1002,7 +1002,7 @@
     .official-card .name { font-size: 0.82rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
     .official-card .role { font-size: 0.71rem; color: var(--gray3); }
 
-    /* ── CRISIS STATS ── */
+    /* ââ CRISIS STATS ââ */
     .crisis-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1021,7 +1021,32 @@
     .crisis-card li { margin-bottom: 4px; }
     .crisis-card.highlight { border-top: 2px solid var(--red2); }
 
-    /* ── FOOTER ── */
+    /* ââ LANGUAGE TOGGLE ââ */
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--gray3);
+      border-radius: 2px;
+      overflow: hidden;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      align-self: flex-start;
+      flex-shrink: 0;
+    }
+    .lang-toggle span {
+      padding: 5px 11px;
+      background: var(--off-white);
+      color: var(--ink3);
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-toggle span.active {
+      background: var(--red2);
+      color: #fff;
+    }
+
+    /* ââ FOOTER ââ */
     footer {
       background: var(--nav-bg);
       color: #737373;
@@ -1057,16 +1082,16 @@
 
 <!-- ALERT BANNER -->
 <div class="alert-banner">
-  <strong>If the stench hits — report it.</strong> Every report adds to the record. Overnight and weekly emails go automatically to officials on both sides of the border. File one each time it happens.
+  <strong>If the stench hits â report it.</strong> Every report adds to the record. Overnight and weekly emails go automatically to officials on both sides of the border. File one each time it happens.
 </div>
 
 <!-- HERO -->
 <div class="hero">
   <div id="hero-map"></div>
-  <div class="hero-eyebrow">Active Environmental Crisis — South San Diego County</div>
+  <div class="hero-eyebrow">Active Environmental Crisis â South San Diego County</div>
   <h1>Enough. Make the Stench<br><span class="accent">Their Problem Too.</span></h1>
   <p class="hero-sub">
-    Residents of <strong>Imperial Beach, Coronado, San Ysidro, San Diego, and Chula Vista</strong> are forced to breathe toxic sewer gas while officials make promises. Every time you smell it — report it. Each complaint is documented and reported to every official responsible for fixing this — on a nightly and weekly schedule.
+    Residents of <strong>Imperial Beach, Coronado, San Ysidro, San Diego, and Chula Vista</strong> are forced to breathe toxic sewer gas while officials make promises. Every time you smell it â report it. Each complaint is documented and reported to every official responsible for fixing this â on a nightly and weekly schedule.
   </p>
   <a href="#report" class="hero-cta">File a Complaint Now</a>
 </div>
@@ -1074,11 +1099,11 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
-    <div class="stat-number" id="stat-total">—</div>
+    <div class="stat-number" id="stat-total">â</div>
     <div class="stat-label">Total Reports Filed</div>
   </div>
   <div class="stat-item">
-    <div class="stat-number" id="stat-week">—</div>
+    <div class="stat-number" id="stat-week">â</div>
     <div class="stat-label">Reports This Week</div>
   </div>
   <div class="stat-item">
@@ -1086,29 +1111,35 @@
     <div class="stat-label">Officials on Notice</div>
   </div>
   <div class="stat-item">
-    <div class="stat-number" id="stat-tonight">—</div>
+    <div class="stat-number" id="stat-tonight">â</div>
     <div class="stat-label">Reports Last 12 Hours</div>
   </div>
 </div>
 
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <!-- SECTION 1: COMPLAINT FORM    -->
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <div class="section" id="report">
   <div class="section-inner-narrow">
-    <div class="section-label">File a Report</div>
-    <h2 class="section-title">Submit Your Complaint</h2>
-    <p class="section-desc">Takes under 2 minutes. Anonymous submissions accepted. <strong style="color:var(--ink);">File a report each time the stench hits</strong> — every individual complaint builds the record and the pressure.</p>
+    <div class="section-label" id="report-label">File a Report</div>
+    <h2 class="section-title" id="report-title">Submit Your Complaint</h2>
+    <p class="section-desc" id="report-desc">Takes under 2 minutes. Anonymous submissions accepted. <strong style="color:var(--ink);">File a report each time the stench hits</strong> â every individual complaint builds the record and the pressure.</p>
 
     <div class="form-card">
       <div class="form-card-header">
         <div>
-          <h2>File a Complaint</h2>
-          <p>3 required fields &nbsp;·&nbsp; under 60 seconds &nbsp;·&nbsp; anonymous OK</p>
+          <h2 id="form-card-title">File a Complaint</h2>
+          <p id="form-card-sub">3 required fields &nbsp;Â·&nbsp; under 60 seconds &nbsp;Â·&nbsp; anonymous OK</p>
         </div>
-        <div class="alert-badge">
-          <div class="badge-count" id="tonight-badge">—</div>
-          <div class="badge-label">Reports<br>last 12 hrs</div>
+        <div style="display:flex;align-items:flex-start;gap:12px;flex-shrink:0;">
+          <div class="lang-toggle" id="langToggle" onclick="toggleLang()" title="Switch language / Cambiar idioma">
+            <span id="langEN" class="active">EN</span>
+            <span id="langES">ES</span>
+          </div>
+          <div class="alert-badge">
+            <div class="badge-count" id="tonight-badge">â</div>
+            <div class="badge-label" id="badge-label">Reports<br>last 12 hrs</div>
+          </div>
         </div>
       </div>
 
@@ -1117,31 +1148,31 @@
           Form ID: 1WTmoXWPfW4m5QGLOPzyV_a74q5K6Qmxqc-eT0emm58k
           Published ID: 1FAIpQLSczaujVBEY5sJOmCdrIanSNn0cETA59_tjvAmlLeImbvZIgTg
           TODO: Replace REPLACE_WITH_YOUR_GOOGLE_SHEET_ID in the loadStats() function
-                with the Sheet ID from the linked Google Sheet (Responses → View in Sheets).
+                with the Sheet ID from the linked Google Sheet (Responses â View in Sheets).
         -->
         <form id="complaintForm" onsubmit="handleSubmit(event)">
 
-          <p class="form-required-hint"><strong>*</strong> required &nbsp;—&nbsp; these 3 fields are all you need</p>
+          <p class="form-required-hint" id="form-required-hint"><strong>*</strong> required &nbsp;â&nbsp; these 3 fields are all you need</p>
 
           <!-- REQUIRED FIELDS -->
           <div class="form-grid">
 
             <div class="form-row">
-              <label>Your neighborhood / location <span class="req">*</span></label>
-              <select name="entry.1490422776" required>
+              <label id="lbl-location">Your neighborhood / location <span class="req">*</span></label>
+              <select name="entry.1490422776" id="sel-location" required>
                 <option value="">Select your area...</option>
                 <option>Imperial Beach</option>
                 <optgroup label="San Diego">
-                  <option>San Diego — San Ysidro</option>
-                  <option>San Diego — Otay Mesa</option>
-                  <option>San Diego — Nestor</option>
-                  <option>San Diego — Otay Mesa West</option>
-                  <option>San Diego — Other South</option>
+                  <option>San Diego â San Ysidro</option>
+                  <option>San Diego â Otay Mesa</option>
+                  <option>San Diego â Nestor</option>
+                  <option>San Diego â Otay Mesa West</option>
+                  <option>San Diego â Other South</option>
                 </optgroup>
                 <optgroup label="Chula Vista">
-                  <option>Chula Vista — South Bay</option>
-                  <option>Chula Vista — Otay Ranch</option>
-                  <option>Chula Vista — Eastlake</option>
+                  <option>Chula Vista â South Bay</option>
+                  <option>Chula Vista â Otay Ranch</option>
+                  <option>Chula Vista â Eastlake</option>
                 </optgroup>
                 <optgroup label="Other">
                   <option>Coronado</option>
@@ -1152,31 +1183,31 @@
             </div>
 
             <div class="form-row">
-              <label>How long has it been ongoing? <span class="req">*</span></label>
-              <select name="entry.247287864" required>
+              <label id="lbl-duration">How long has it been ongoing? <span class="req">*</span></label>
+              <select name="entry.247287864" id="sel-duration" required>
                 <option value="">Select...</option>
                 <option>Just started (under 1 hour)</option>
-                <option>1–3 hours</option>
-                <option>3–6 hours</option>
+                <option>1â3 hours</option>
+                <option>3â6 hours</option>
                 <option>All night / 6+ hours</option>
                 <option>Multiple days in a row</option>
               </select>
             </div>
 
             <div class="form-row full">
-              <label>Smell intensity right now <span class="req">*</span> <span style="font-size:0.75rem;font-weight:500;color:#ef4444;margin-left:6px;">← drag the slider to your level →</span></label>
+              <label id="lbl-intensity">Smell intensity right now <span class="req">*</span> <span style="font-size:0.75rem;font-weight:500;color:#ef4444;margin-left:6px;">â drag the slider to your level â</span></label>
               <div class="severity-wrap">
                 <input type="range" id="severity_range" name="entry.907203543"
                        min="1" max="5" value="3"
                        oninput="document.getElementById('sev_val').textContent=this.value; updateSeverityColor(this.value)">
                 <div class="severity-val" id="sev_val">3</div>
               </div>
-              <div class="severity-labels">
-                <span>1 — Faint</span>
-                <span>2 — Noticeable</span>
-                <span>3 — Strong</span>
-                <span>4 — Severe</span>
-                <span>5 — Unbearable</span>
+              <div class="severity-labels" id="severity-labels">
+                <span>1 â Faint</span>
+                <span>2 â Noticeable</span>
+                <span>3 â Strong</span>
+                <span>4 â Severe</span>
+                <span>5 â Unbearable</span>
               </div>
             </div>
 
@@ -1184,8 +1215,8 @@
 
           <!-- OPTIONAL DETAILS TOGGLE -->
           <button type="button" class="details-toggle" id="detailsToggle" onclick="toggleDetails()">
-            + Add details (symptoms, description, contact info) — optional but strengthens your report
-            <span class="toggle-arrow">▾</span>
+            + Add details (symptoms, description, contact info) â optional but strengthens your report
+            <span class="toggle-arrow">â¾</span>
           </button>
 
           <!-- OPTIONAL FIELDS (collapsed by default) -->
@@ -1193,8 +1224,8 @@
             <div class="form-grid">
 
               <div class="form-row full">
-                <label>Health symptoms (check all that apply)</label>
-                <div class="checkbox-grid">
+                <label id="lbl-symptoms">Health symptoms (check all that apply)</label>
+                <div class="checkbox-grid" id="checkbox-grid">
                   <label class="checkbox-item"><input type="checkbox" name="entry.1956466788" value="Headache / Migraine" onchange="toggleChecked(this)"> Headache / Migraine</label>
                   <label class="checkbox-item"><input type="checkbox" name="entry.1956466788" value="Nausea / Vomiting" onchange="toggleChecked(this)"> Nausea / Vomiting</label>
                   <label class="checkbox-item"><input type="checkbox" name="entry.1956466788" value="Eye irritation" onchange="toggleChecked(this)"> Eye irritation</label>
@@ -1207,47 +1238,47 @@
               </div>
 
               <div class="form-row">
-                <label>Windows closed because of the smell?</label>
-                <select name="entry.824451267">
+                <label id="lbl-windows">Windows closed because of the smell?</label>
+                <select name="entry.824451267" id="sel-windows">
                   <option value="">Select...</option>
-                  <option value="Yes">Yes — closed right now</option>
+                  <option value="Yes">Yes â closed right now</option>
                   <option value="Already">Already had them shut</option>
                   <option value="No">No</option>
                 </select>
               </div>
 
               <div class="form-row">
-                <label>Children or elderly in your household affected?</label>
-                <select name="entry.871476581">
+                <label id="lbl-children">Children or elderly in your household affected?</label>
+                <select name="entry.871476581" id="sel-children">
                   <option value="">Select...</option>
-                  <option value="Children">Yes — children (under 18)</option>
-                  <option value="Elderly">Yes — elderly (65+)</option>
-                  <option value="Both">Yes — both</option>
+                  <option value="Children">Yes â children (under 18)</option>
+                  <option value="Elderly">Yes â elderly (65+)</option>
+                  <option value="Both">Yes â both</option>
                   <option value="No">No</option>
                 </select>
               </div>
 
               <div class="form-row full">
-                <label>Describe what you're experiencing — your words carry weight</label>
-                <textarea name="entry.717805650" placeholder="e.g. 'The smell woke me up at 2am. My daughter is coughing. We haven't opened our windows in three days...'"></textarea>
+                <label id="lbl-describe">Describe what you're experiencing â your words carry weight</label>
+                <textarea name="entry.717805650" id="describe-textarea" placeholder="e.g. 'The smell woke me up at 2am. My daughter is coughing. We haven't opened our windows in three days...'"></textarea>
               </div>
 
             </div>
 
             <hr class="form-divider">
-            <p class="form-optional-note">Optional contact info — helps track patterns and lets us notify you when officials respond.</p>
+            <p class="form-optional-note" id="form-optional-note">Optional contact info â helps track patterns and lets us notify you when officials respond.</p>
 
             <div class="form-grid">
               <div class="form-row">
-                <label>Your name (optional)</label>
-                <input type="text" name="entry.1693083561" placeholder="First name or leave blank">
+                <label id="lbl-name">Your name (optional)</label>
+                <input type="text" name="entry.1693083561" id="inp-name" placeholder="First name or leave blank">
               </div>
               <div class="form-row">
-                <label>Email address (optional)</label>
+                <label id="lbl-email">Email address (optional)</label>
                 <input type="email" name="entry.30396298" placeholder="your@email.com">
               </div>
               <div class="form-row" style="margin-top:4px;">
-                <label class="checkbox-item" style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;color:#a8c0d8;">
+                <label id="lbl-sendcopy" class="checkbox-item" style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.85rem;color:#a8c0d8;">
                   <input type="checkbox" name="send_copy" value="yes" style="width:16px;height:16px;accent-color:#ef4444;cursor:pointer;">
                   Send me a copy of my complaint as confirmation
                 </label>
@@ -1259,7 +1290,7 @@
           <div style="margin-top:20px;">
             <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.82rem;color:#a8c0d8;line-height:1.6;">
               <input type="checkbox" id="agreeCheck" style="width:16px;height:16px;margin-top:2px;accent-color:#ef4444;cursor:pointer;flex-shrink:0;" required>
-              <span>My complaint is truthful and based on conditions I personally experienced. I have read and agree to the <a href="/terms-of-use.html" target="_blank" style="color:#ef4444;white-space:nowrap;">Terms of Use</a> and <a href="/privacy-policy.html" target="_blank" style="color:#ef4444;white-space:nowrap;">Privacy Policy</a>.</span>
+              <span id="agree-span">My complaint is truthful and based on conditions I personally experienced. I have read and agree to the <a href="/terms-of-use.html" target="_blank" style="color:#ef4444;white-space:nowrap;">Terms of Use</a> and <a href="/privacy-policy.html" target="_blank" style="color:#ef4444;white-space:nowrap;">Privacy Policy</a>.</span>
             </label>
           </div>
 
@@ -1273,10 +1304,10 @@
 
           <!-- Step 1: Confirmed -->
           <div class="success-step1">
-            <div class="check-icon">✅</div>
+            <div class="check-icon">â</div>
             <div>
               <h3>Report filed and logged.</h3>
-              <p>Your complaint is on the record. Now take one more step — it takes 10 seconds and makes a real difference.</p>
+              <p>Your complaint is on the record. Now take one more step â it takes 10 seconds and makes a real difference.</p>
             </div>
           </div>
 
@@ -1284,7 +1315,7 @@
           <div class="email-cta">
             <div class="step-label">One more step</div>
             <h3>Your complaint letter is ready to send.</h3>
-            <p>We wrote it for you. Copy it, open your email app, and send it to officials — takes 30 seconds.</p>
+            <p>We wrote it for you. Copy it, open your email app, and send it to officials â takes 30 seconds.</p>
 
             <div class="email-preview" id="emailPreview">
               <div class="email-preview-header">
@@ -1305,7 +1336,7 @@
               <button onclick="openAppleMail(event)" id="appleMailBtn" class="provider-btn provider-btn--apple">Apple Mail</button>
             </div>
             
-            <p class="email-note" style="margin:12px auto;">Click your email provider — the letter opens pre-written and pre-addressed. Just hit Send.</p>
+            <p class="email-note" style="margin:12px auto;">Click your email provider â the letter opens pre-written and pre-addressed. Just hit Send.</p>
             <div class="copy-section">
               <p class="copy-section-label">Using iCloud Mail or another provider?</p>
               <div class="copy-row">
@@ -1320,12 +1351,12 @@
                 <span class="copy-row-text">Pre-written complaint letter</span>
                 <button onclick="copyLetter()" id="copyBtn" class="copy-mini-btn">Copy Letter</button>
               </div>
-              <p class="email-note" style="margin-top:10px; text-align:center;">Copy the addresses → open your email app → paste into the To field → copy the letter → paste into the body → Send.</p>
+              <p class="email-note" style="margin-top:10px; text-align:center;">Copy the addresses â open your email app â paste into the To field â copy the letter â paste into the body â Send.</p>
             </div>
           </div>
 
           <div class="repeat-note" style="margin-top:14px;">
-            🔁 Smell it again tomorrow? <strong>File another report.</strong> Every separate event is another complaint on record.
+            ð Smell it again tomorrow? <strong>File another report.</strong> Every separate event is another complaint on record.
           </div>
 
           <p style="margin-top:18px; font-size:0.78rem; color:#a3a3a3; text-align:center;">
@@ -1339,14 +1370,14 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <!-- SECTION 2: HOW IT WORKS      -->
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <div class="section section-alt" id="how-it-works">
   <div class="section-inner">
     <div class="section-label">The System</div>
     <h2 class="section-title">How It Works</h2>
-    <p class="section-desc">Every report feeds a real-time database. Complaint data is sent to officials on an overnight and weekly schedule — building a permanent, documented record that lands directly in their inboxes., with your data.</p>
+    <p class="section-desc">Every report feeds a real-time database. Complaint data is sent to officials on an overnight and weekly schedule â building a permanent, documented record that lands directly in their inboxes., with your data.</p>
 
     <div class="steps-grid">
       <div class="step-card">
@@ -1371,30 +1402,30 @@
       </div>
       <div class="step-card">
         <div class="step-num">05</div>
-        <h3>Weekly Reports — Every Monday</h3>
+        <h3>Weekly Reports â Every Monday</h3>
         <p>All officials receive a cumulative weekly summary. The data builds a permanent, undeniable record over time.</p>
       </div>
     </div>
 
     <div class="threshold-callout">
         <div class="threshold-item">
-          <div class="threshold-icon">🌙</div>
+          <div class="threshold-icon">ð</div>
           <div>
             <h4>Nightly (7am daily)</h4>
-            <p>An overnight summary of all reports from 7pm–7am goes to local officials — County Supervisor, Environmental Health, City Clerks, and Water Board.</p>
+            <p>An overnight summary of all reports from 7pmâ7am goes to local officials â County Supervisor, Environmental Health, City Clerks, and Water Board.</p>
           </div>
         </div>
         <div class="threshold-item">
-          <div class="threshold-icon">📅</div>
+          <div class="threshold-icon">ð</div>
           <div>
             <h4>Weekly (Every Monday)</h4>
-            <p>Full weekly digest to every official on the list — Congress, Senate, EPA, IBWC, Governor's office, Mexico authorities, environmental media, and advocacy groups.</p>
+            <p>Full weekly digest to every official on the list â Congress, Senate, EPA, IBWC, Governor's office, Mexico authorities, environmental media, and advocacy groups.</p>
           </div>
         </div>
         <div class="threshold-item">
-          <div class="threshold-icon">✉️</div>
+          <div class="threshold-icon">âï¸</div>
           <div>
-            <h4>Your Email — Immediate</h4>
+            <h4>Your Email â Immediate</h4>
             <p>Use the Gmail, Apple Mail, or Outlook button after submitting to send a direct complaint from your own account. Emails from real constituents carry extra weight.</p>
           </div>
         </div>
@@ -1402,18 +1433,18 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <!-- SECTION: AIR QUALITY DATA    -->
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <div class="section" id="air-quality">
   <div class="section-inner">
     <div class="section-label">Live Data</div>
     <h2 class="section-title">H2S Air Quality Readings</h2>
-    <p class="section-desc">Real-time hydrogen sulfide monitoring from three SDAPCD stations in the affected area — San Ysidro, Nestor, and Imperial Beach. Data updates hourly.</p>
+    <p class="section-desc">Real-time hydrogen sulfide monitoring from three SDAPCD stations in the affected area â San Ysidro, Nestor, and Imperial Beach. Data updates hourly.</p>
     <div class="aq-thresholds">
-      <div class="aq-threshold aq-green"><span class="aq-dot"></span><strong>0–4.9 ppb</strong> No health effects expected</div>
-      <div class="aq-threshold aq-yellow"><span class="aq-dot"></span><strong>5–29.9 ppb</strong> Odor noticeable — sensitive groups may be affected</div>
-      <div class="aq-threshold aq-red"><span class="aq-dot"></span><strong>30+ ppb</strong> Health advisory — all residents affected</div>
+      <div class="aq-threshold aq-green"><span class="aq-dot"></span><strong>0â4.9 ppb</strong> No health effects expected</div>
+      <div class="aq-threshold aq-yellow"><span class="aq-dot"></span><strong>5â29.9 ppb</strong> Odor noticeable â sensitive groups may be affected</div>
+      <div class="aq-threshold aq-red"><span class="aq-dot"></span><strong>30+ ppb</strong> Health advisory â all residents affected</div>
     </div>
     <div class="aq-embed-wrap">
       <iframe
@@ -1424,13 +1455,13 @@
         class="aq-iframe">
       </iframe>
     </div>
-    <p class="aq-source">Source: <a href="https://www.sdapcd.org/content/sdapcd/about/tj-river-valley/tjrv-air-quality-monitoring.html" target="_blank" rel="noopener">San Diego Air Pollution Control District — TJ River Valley Monitoring</a></p>
+    <p class="aq-source">Source: <a href="https://www.sdapcd.org/content/sdapcd/about/tj-river-valley/tjrv-air-quality-monitoring.html" target="_blank" rel="noopener">San Diego Air Pollution Control District â TJ River Valley Monitoring</a></p>
   </div>
 </div>
 
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <!-- SECTION: THE COST            -->
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <div class="section cost-section" id="the-cost">
   <div class="section-inner">
     <div class="section-label" style="color:#fca5a5;">The Toll</div>
@@ -1442,11 +1473,11 @@
 
       <!-- Imperial Beach -->
       <div class="beach-card">
-        <div class="beach-status-badge beach-closed">● CLOSED</div>
+        <div class="beach-status-badge beach-closed">â CLOSED</div>
         <div class="beach-name">Imperial Beach</div>
         <div class="beach-stats-row">
           <div class="beach-stat">
-            <div class="beach-stat-num" id="ib-consec">—</div>
+            <div class="beach-stat-num" id="ib-consec">â</div>
             <div class="beach-stat-lbl">Days in current closure</div>
           </div>
           <div class="beach-stat beach-stat-divider">
@@ -1454,16 +1485,16 @@
             <div class="beach-stat-lbl">Total documented days closed</div>
           </div>
         </div>
-        <div class="beach-note">Tracking since Dec 8, 2021 · Current closure began Nov 1, 2025</div>
+        <div class="beach-note">Tracking since Dec 8, 2021 Â· Current closure began Nov 1, 2025</div>
       </div>
 
       <!-- Silver Strand -->
       <div class="beach-card">
-        <div class="beach-status-badge beach-closed">● CLOSED</div>
+        <div class="beach-status-badge beach-closed">â CLOSED</div>
         <div class="beach-name">Silver Strand State Beach</div>
         <div class="beach-stats-row">
           <div class="beach-stat">
-            <div class="beach-stat-num" id="ss-consec">—</div>
+            <div class="beach-stat-num" id="ss-consec">â</div>
             <div class="beach-stat-lbl">Days in current closure</div>
           </div>
           <div class="beach-stat beach-stat-divider">
@@ -1471,12 +1502,12 @@
             <div class="beach-stat-lbl">Total documented days closed</div>
           </div>
         </div>
-        <div class="beach-note">Tracking since Dec 8, 2021 · Current closure began Nov 1, 2025</div>
+        <div class="beach-note">Tracking since Dec 8, 2021 Â· Current closure began Nov 1, 2025</div>
       </div>
 
       <!-- Coronado Beach -->
       <div class="beach-card">
-        <div class="beach-status-badge beach-intermittent">◐ INTERMITTENT</div>
+        <div class="beach-status-badge beach-intermittent">â INTERMITTENT</div>
         <div class="beach-name">Coronado Beach</div>
         <div class="beach-stats-row">
           <div class="beach-stat">
@@ -1488,7 +1519,7 @@
             <div class="beach-stat-lbl">Days in longest single closure</div>
           </div>
         </div>
-        <div class="beach-note">Shorter, recurring closures since Jun 2023 · Closed Apr &amp; Sep 2025</div>
+        <div class="beach-note">Shorter, recurring closures since Jun 2023 Â· Closed Apr &amp; Sep 2025</div>
       </div>
 
     </div><!-- /.beach-grid -->
@@ -1500,19 +1531,19 @@
         <div class="econ-dollar">$</div>
         <div class="econ-amount" id="econ-counter">0</div>
       </div>
-      <div class="econ-rate-note">Accumulating at ~$4.63 per second · $400,000 per day · $146M per year</div>
+      <div class="econ-rate-note">Accumulating at ~$4.63 per second Â· $400,000 per day Â· $146M per year</div>
 
       <!-- Methodology toggle -->
-      <button class="methodology-btn" id="methToggle" onclick="toggleMethodology()">How we calculate this ↓</button>
+      <button class="methodology-btn" id="methToggle" onclick="toggleMethodology()">How we calculate this â</button>
       <div class="methodology-box" id="methodologyBox">
         <div class="meth-grid">
           <div class="meth-item">
             <div class="meth-item-title">Direct Tourism Loss</div>
-            <p>Southern California beach visitor spend averages ~$50/person-day (NOAA/ScienceDirect). Combined normal-day visitation for these three beaches: ~8,000 people. Estimated lost revenue: <strong>$200K–$400K/day.</strong></p>
+            <p>Southern California beach visitor spend averages ~$50/person-day (NOAA/ScienceDirect). Combined normal-day visitation for these three beaches: ~8,000 people. Estimated lost revenue: <strong>$200Kâ$400K/day.</strong></p>
           </div>
           <div class="meth-item">
             <div class="meth-item-title">Property Tax &amp; City Revenue</div>
-            <p>City of Imperial Beach alone reports $1–1.5M/year in property tax losses. Property values in IB are down an estimated 12–15%, the only beach community in California where values have declined.</p>
+            <p>City of Imperial Beach alone reports $1â1.5M/year in property tax losses. Property values in IB are down an estimated 12â15%, the only beach community in California where values have declined.</p>
           </div>
           <div class="meth-item">
             <div class="meth-item-title">Business Revenue</div>
@@ -1528,29 +1559,29 @@
         </div>
         <div class="meth-sources">
           <strong>Sources:</strong>
-          <a href="https://www.imperialbeachca.gov/DocumentCenter/View/3164/082325-Imperial-Beach-Sewage-FAQs" target="_blank" rel="noopener">City of Imperial Beach FAQ (Aug 2025)</a> ·
-          <a href="https://engage.sandiegocounty.gov/border-pollution" target="_blank" rel="noopener">SD County Border Pollution Economic Survey (2023)</a> ·
-          <a href="https://www.sciencedirect.com/science/article/abs/pii/S0964569111002067" target="_blank" rel="noopener">Beach Expenditures in Southern California (ScienceDirect)</a> ·
-          <a href="https://www.surfline.com/surf-news/imperial-beach-1000-days-beach-closures/210284" target="_blank" rel="noopener">Imperial Beach: 1,000 Days of Closures (Surfline)</a> ·
+          <a href="https://www.imperialbeachca.gov/DocumentCenter/View/3164/082325-Imperial-Beach-Sewage-FAQs" target="_blank" rel="noopener">City of Imperial Beach FAQ (Aug 2025)</a> Â·
+          <a href="https://engage.sandiegocounty.gov/border-pollution" target="_blank" rel="noopener">SD County Border Pollution Economic Survey (2023)</a> Â·
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S0964569111002067" target="_blank" rel="noopener">Beach Expenditures in Southern California (ScienceDirect)</a> Â·
+          <a href="https://www.surfline.com/surf-news/imperial-beach-1000-days-beach-closures/210284" target="_blank" rel="noopener">Imperial Beach: 1,000 Days of Closures (Surfline)</a> Â·
           <a href="https://timesofsandiego.com/health/2025/11/01/imperial-beach-shoreline-closed-to-water-contact/" target="_blank" rel="noopener">IB Shoreline Closed Nov 2025 (Times of San Diego)</a>
         </div>
-        <p class="meth-verify">Beach status last verified April 24, 2026. Data is updated monthly — if you have a correction, <a href="/contact.html">contact us</a>.</p>
+        <p class="meth-verify">Beach status last verified April 24, 2026. Data is updated monthly â if you have a correction, <a href="/contact.html">contact us</a>.</p>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <!-- SECTION 3: OFFICIALS         -->
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <div class="section" id="officials">
   <div class="section-inner">
     <div class="officials-header">
       <div>
         <div class="section-label">On Notice</div>
         <h2 class="section-title">Officials Being Notified</h2>
-        <p class="section-desc" style="margin-bottom:0;">Every report you file reaches the officials below — automatically, with your data, delivered to their inboxes.</p>
+        <p class="section-desc" style="margin-bottom:0;">Every report you file reaches the officials below â automatically, with your data, delivered to their inboxes.</p>
       </div>
       <div class="officials-count">
         <div class="big">25</div>
@@ -1560,7 +1591,7 @@
 
     <div class="officials-tier">
       <div class="tier-header">
-        <span>🇺🇸</span>
+        <span>ðºð¸</span>
         <span class="tier-name">US Federal</span>
         <span class="tier-count">8 officials</span>
       </div>
@@ -1568,17 +1599,17 @@
         <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">Lee Zeldin</div><div class="role">EPA Administrator</div></div></div>
         <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">EPA Region 9</div><div class="role">Pacific Southwest Regional Office</div></div></div>
         <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">W.C. Chad McIntosh</div><div class="role">IBWC US Commissioner</div></div></div>
-        <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">Rep. Juan Vargas</div><div class="role">US Congress, CA-52 — San Ysidro</div></div></div>
-        <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">Rep. Scott Peters</div><div class="role">US Congress, CA-50 — Imperial Beach</div></div></div>
+        <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">Rep. Juan Vargas</div><div class="role">US Congress, CA-52 â San Ysidro</div></div></div>
+        <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">Rep. Scott Peters</div><div class="role">US Congress, CA-50 â Imperial Beach</div></div></div>
         <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">Sen. Alex Padilla</div><div class="role">US Senate, California</div></div></div>
         <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">Sen. Adam Schiff</div><div class="role">US Senate, California</div></div></div>
-        <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">ATSDR</div><div class="role">Agency for Toxic Substances &amp; Disease Registry — HHS</div></div></div>
+        <div class="official-card"><span class="role-dot dot-fed"></span><div><div class="name">ATSDR</div><div class="role">Agency for Toxic Substances &amp; Disease Registry â HHS</div></div></div>
       </div>
     </div>
 
     <div class="officials-tier">
       <div class="tier-header">
-        <span>🏛</span>
+        <span>ð</span>
         <span class="tier-name">California State</span>
         <span class="tier-count">4 officials / agencies</span>
       </div>
@@ -1592,13 +1623,13 @@
 
     <div class="officials-tier">
       <div class="tier-header">
-        <span>🏙</span>
+        <span>ð</span>
         <span class="tier-name">County &amp; Local</span>
         <span class="tier-count">7 officials / agencies</span>
       </div>
       <div class="official-cards">
-        <div class="official-card"><span class="role-dot dot-local"></span><div><div class="name">SD County Supervisor — District 1</div><div class="role">South County — Imperial Beach, South Bay</div></div></div>
-        <div class="official-card"><span class="role-dot dot-local"></span><div><div class="name">Terra Lawson-Remer</div><div class="role">SD County Supervisor — District 3</div></div></div>
+        <div class="official-card"><span class="role-dot dot-local"></span><div><div class="name">SD County Supervisor â District 1</div><div class="role">South County â Imperial Beach, South Bay</div></div></div>
+        <div class="official-card"><span class="role-dot dot-local"></span><div><div class="name">Terra Lawson-Remer</div><div class="role">SD County Supervisor â District 3</div></div></div>
         <div class="official-card"><span class="role-dot dot-local"></span><div><div class="name">Mitch McKay</div><div class="role">Mayor, Imperial Beach</div></div></div>
         <div class="official-card"><span class="role-dot dot-local"></span><div><div class="name">Todd Gloria</div><div class="role">Mayor, City of San Diego</div></div></div>
         <div class="official-card"><span class="role-dot dot-local"></span><div><div class="name">SD County Dept of Environmental Health</div><div class="role">Local pollution enforcement</div></div></div>
@@ -1609,23 +1640,23 @@
 
     <div class="officials-tier">
       <div class="tier-header">
-        <span>🇲🇽</span>
-        <span class="tier-name">Mexico — Federal, State &amp; Local</span>
+        <span>ð²ð½</span>
+        <span class="tier-name">Mexico â Federal, State &amp; Local</span>
         <span class="tier-count">6 officials / agencies</span>
       </div>
       <div class="official-cards">
-        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">Ismael Burgueño Ruiz</div><div class="role">Mayor of Tijuana</div></div></div>
-        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">Marina del Pilar Ávila Olmeda</div><div class="role">Governor of Baja California</div></div></div>
-        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">CESPT</div><div class="role">Tijuana sewage utility — most directly responsible</div></div></div>
+        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">Ismael BurgueÃ±o Ruiz</div><div class="role">Mayor of Tijuana</div></div></div>
+        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">Marina del Pilar Ãvila Olmeda</div><div class="role">Governor of Baja California</div></div></div>
+        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">CESPT</div><div class="role">Tijuana sewage utility â most directly responsible</div></div></div>
         <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">CONAGUA</div><div class="role">Mexico's National Water Commission</div></div></div>
         <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">SEMARNAT</div><div class="role">Mexico's Environment Ministry</div></div></div>
-        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">SRE — Ministry of Foreign Affairs</div><div class="role">Treaty compliance, bilateral obligations</div></div></div>
+        <div class="official-card"><span class="role-dot dot-mexico"></span><div><div class="name">SRE â Ministry of Foreign Affairs</div><div class="role">Treaty compliance, bilateral obligations</div></div></div>
       </div>
     </div>
 
     <div class="officials-tier">
       <div class="tier-header">
-        <span>📢</span>
+        <span>ð¢</span>
         <span class="tier-name">Advocacy, Legal &amp; Media</span>
         <span class="tier-count">8 organizations</span>
       </div>
@@ -1637,21 +1668,21 @@
         <div class="official-card"><span class="role-dot dot-state"></span><div><div class="name">Voice of San Diego</div><div class="role">Investigative journalism</div></div></div>
         <div class="official-card"><span class="role-dot dot-state"></span><div><div class="name">inewsource</div><div class="role">Investigative nonprofit newsroom</div></div></div>
         <div class="official-card"><span class="role-dot dot-state"></span><div><div class="name">San Diego Union-Tribune</div><div class="role">Largest regional newspaper</div></div></div>
-        <div class="official-card"><span class="role-dot dot-state"></span><div><div class="name">The Guardian — Environment Desk</div><div class="role">National investigative coverage</div></div></div>
+        <div class="official-card"><span class="role-dot dot-state"></span><div><div class="name">The Guardian â Environment Desk</div><div class="role">National investigative coverage</div></div></div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <!-- SECTION 4: ABOUT             -->
-<!-- ══════════════════════════════ -->
+<!-- ââââââââââââââââââââââââââââââ -->
 <div class="section section-alt" id="about">
   <div class="section-inner">
     <div class="section-label">The Crisis</div>
     <h2 class="section-title">By the Numbers</h2>
-    <p class="section-desc">This is not a new problem. It is a decades-long failure of infrastructure, political will, and bilateral accountability — playing out in South San Diego neighborhoods right now.</p>
+    <p class="section-desc">This is not a new problem. It is a decades-long failure of infrastructure, political will, and bilateral accountability â playing out in South San Diego neighborhoods right now.</p>
 
     <div class="crisis-grid">
       <div class="crisis-card highlight">
@@ -1675,7 +1706,7 @@
           <li>Tijuana's CESPT pump stations and conveyance lines chronically failing</li>
           <li>The US South Bay treatment plant in San Ysidro perpetually underfunded</li>
           <li>Heavy rain events overwhelm the entire cross-border system</li>
-          <li>Hydrogen sulfide gas from raw sewage — worst at night when air is still</li>
+          <li>Hydrogen sulfide gas from raw sewage â worst at night when air is still</li>
         </ul>
       </div>
       <div class="crisis-card">
@@ -1684,12 +1715,12 @@
           <li>US-Mexico "Minute 333" agreement signed Dec 2025 commits to new infrastructure</li>
           <li>South Bay plant expanded to 35 MGD in Aug 2025 (up from 25 MGD)</li>
           <li>New Tecolote-La Gloria treatment plant in Tijuana due Dec 2028</li>
-          <li>All fixes remain 2–3+ years from completion</li>
+          <li>All fixes remain 2â3+ years from completion</li>
         </ul>
       </div>
       <div class="crisis-card">
         <h3>Why This Tool Exists</h3>
-        <p>Agreements don't fix the problem tonight. Politicians respond to sustained, documented, impossible-to-ignore pressure from the people they represent. Every report you file is part of a permanent record. Every notification is a reminder that the stench is still there — and so are the people living in it.</p>
+        <p>Agreements don't fix the problem tonight. Politicians respond to sustained, documented, impossible-to-ignore pressure from the people they represent. Every report you file is part of a permanent record. Every notification is a reminder that the stench is still there â and so are the people living in it.</p>
       </div>
     </div>
   </div>
@@ -1697,12 +1728,162 @@
 
 <!-- FOOTER -->
 <footer>
-  <p><strong>Tijuana River Crisis Alert System</strong> — Built by and for residents of Imperial Beach, Coronado, San Ysidro, San Diego, and Chula Vista.</p>
+  <p><strong>Tijuana River Crisis Alert System</strong> â Built by and for residents of Imperial Beach, Coronado, San Ysidro, San Diego, and Chula Vista.</p>
   <p style="margin-top:6px;">Citizen advocacy tool. All reports are used solely to document conditions and apply pressure to elected officials.</p>
-  <p style="margin-top:6px;"><a href="/about.html">About</a> · <a href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">SD Air Quality Report</a> · <a href="/blog/why-we-built-this.html">Why We Built This</a> · <a href="/subscribe.html">Media &amp; Advocacy Alerts</a> · <a href="/contact.html">Contact</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms-of-use.html">Terms of Use</a> · &copy; 2026 Tijuana River Watch</p>
+  <p style="margin-top:6px;"><a href="/about.html">About</a> Â· <a href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">SD Air Quality Report</a> Â· <a href="/blog/why-we-built-this.html">Why We Built This</a> Â· <a href="/subscribe.html">Media &amp; Advocacy Alerts</a> Â· <a href="/contact.html">Contact</a> Â· <a href="/privacy-policy.html">Privacy Policy</a> Â· <a href="/terms-of-use.html">Terms of Use</a> Â· &copy; 2026 Tijuana River Watch</p>
 </footer>
 
 <script>
+  // ââ LANGUAGE TOGGLE ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+
+  let currentLang = 'en';
+
+  const i18n = {
+    en: {
+      reportLabel:       'File a Report',
+      reportTitle:       'Submit Your Complaint',
+      reportDesc:        'Takes under 2 minutes. Anonymous submissions accepted. <strong style="color:var(--ink);">File a report each time the stench hits</strong> â every individual complaint builds the record and the pressure.',
+      formCardTitle:     'File a Complaint',
+      formCardSub:       '3 required fields &nbsp;Â·&nbsp; under 60 seconds &nbsp;Â·&nbsp; anonymous OK',
+      badgeLabel:        'Reports<br>last 12 hrs',
+      requiredHint:      '<strong>*</strong> required &nbsp;â&nbsp; these 3 fields are all you need',
+      lblLocation:       'Your neighborhood / location <span class="req">*</span>',
+      locPlaceholder:    'Select your area...',
+      lblDuration:       'How long has it been ongoing? <span class="req">*</span>',
+      durOptions:        ['Select...', 'Just started (under 1 hour)', '1â3 hours', '3â6 hours', 'All night / 6+ hours', 'Multiple days in a row'],
+      lblIntensity:      'Smell intensity right now <span class="req">*</span> <span style="font-size:0.75rem;font-weight:500;color:#ef4444;margin-left:6px;">â drag the slider to your level â</span>',
+      sevLabels:         ['1 â Faint', '2 â Noticeable', '3 â Strong', '4 â Severe', '5 â Unbearable'],
+      detailsToggleClosed: '+ Add details (symptoms, description, contact info) â optional but strengthens your report <span class="toggle-arrow">â¾</span>',
+      detailsToggleOpen:   'â Hide optional details <span class="toggle-arrow" style="transform:rotate(180deg)">â¾</span>',
+      lblSymptoms:       'Health symptoms (check all that apply)',
+      checkboxLabels:    ['Headache / Migraine', 'Nausea / Vomiting', 'Eye irritation', 'Throat / breathing issues', 'Dizziness / brain fog', 'Skin rash / irritation', "Can't sleep / windows shut", 'Asthma / inhaler needed'],
+      lblWindows:        'Windows closed because of the smell?',
+      winOptions:        ['Select...', 'Yes â closed right now', 'Already had them shut', 'No'],
+      lblChildren:       'Children or elderly in your household affected?',
+      childOptions:      ['Select...', 'Yes â children (under 18)', 'Yes â elderly (65+)', 'Yes â both', 'No'],
+      lblDescribe:       "Describe what you're experiencing â your words carry weight",
+      describePlaceholder: "e.g. 'The smell woke me up at 2am. My daughter is coughing. We haven't opened our windows in three days...'",
+      optionalNote:      'Optional contact info â helps track patterns and lets us notify you when officials respond.',
+      lblName:           'Your name (optional)',
+      namePlaceholder:   'First name or leave blank',
+      lblEmail:          'Email address (optional)',
+      sendCopyLabel:     'Send me a copy of my complaint as confirmation',
+      agreeText:         'My complaint is truthful and based on conditions I personally experienced. I have read and agree to the <a href="/terms-of-use.html" target="_blank" style="color:#ef4444;white-space:nowrap;">Terms of Use</a> and <a href="/privacy-policy.html" target="_blank" style="color:#ef4444;white-space:nowrap;">Privacy Policy</a>.',
+      submitBtn:         'Submit Report &amp; Notify Officials',
+    },
+    es: {
+      reportLabel:       'Reportar',
+      reportTitle:       'Presenta Tu Queja',
+      reportDesc:        'Toma menos de 2 minutos. Se aceptan reportes anÃ³nimos. <strong style="color:var(--ink);">Presenta un reporte cada vez que huelas el olor</strong> â cada queja individual construye el expediente y la presiÃ³n.',
+      formCardTitle:     'Presentar una Queja',
+      formCardSub:       '3 campos requeridos &nbsp;Â·&nbsp; menos de 60 segundos &nbsp;Â·&nbsp; anÃ³nimo OK',
+      badgeLabel:        'Reportes<br>Ãºltimas 12 hrs',
+      requiredHint:      '<strong>*</strong> requerido &nbsp;â&nbsp; estos 3 campos son todo lo que necesitas',
+      lblLocation:       'Tu vecindario / ubicaciÃ³n <span class="req">*</span>',
+      locPlaceholder:    'Selecciona tu Ã¡rea...',
+      lblDuration:       'Â¿CuÃ¡nto tiempo lleva? <span class="req">*</span>',
+      durOptions:        ['Selecciona...', 'Justo empezÃ³ (menos de 1 hora)', '1â3 horas', '3â6 horas', 'Toda la noche / mÃ¡s de 6 horas', 'MÃºltiples dÃ­as seguidos'],
+      lblIntensity:      'Intensidad del olor ahora <span class="req">*</span> <span style="font-size:0.75rem;font-weight:500;color:#ef4444;margin-left:6px;">â mueve el control a tu nivel â</span>',
+      sevLabels:         ['1 â Leve', '2 â Notable', '3 â Fuerte', '4 â Severo', '5 â Insoportable'],
+      detailsToggleClosed: '+ Agregar detalles (sÃ­ntomas, descripciÃ³n, contacto) â opcional pero fortalece tu reporte <span class="toggle-arrow">â¾</span>',
+      detailsToggleOpen:   'â Ocultar detalles opcionales <span class="toggle-arrow" style="transform:rotate(180deg)">â¾</span>',
+      lblSymptoms:       'SÃ­ntomas de salud (marque todos los que apliquen)',
+      checkboxLabels:    ['Dolor de cabeza / MigraÃ±a', 'NÃ¡useas / VÃ³mitos', 'IrritaciÃ³n de ojos', 'Problemas de garganta / respiraciÃ³n', 'Mareo / confusiÃ³n mental', 'Sarpullido / irritaciÃ³n de piel', 'No puedo dormir / ventanas cerradas', 'Asma / necesitÃ© inhalador'],
+      lblWindows:        'Â¿Ventanas cerradas por el olor?',
+      winOptions:        ['Selecciona...', 'SÃ­ â cerradas ahora mismo', 'Ya las tenÃ­a cerradas', 'No'],
+      lblChildren:       'Â¿NiÃ±os o adultos mayores en tu hogar afectados?',
+      childOptions:      ['Selecciona...', 'SÃ­ â niÃ±os (menores de 18)', 'SÃ­ â adultos mayores (65+)', 'SÃ­ â ambos', 'No'],
+      lblDescribe:       'Describe lo que estÃ¡s experimentando â tus palabras tienen peso',
+      describePlaceholder: "ej. 'El olor me despertÃ³ a las 2am. Mi hija estÃ¡ tosiendo. No hemos abierto las ventanas en tres dÃ­as...'",
+      optionalNote:      'InformaciÃ³n de contacto opcional â ayuda a rastrear patrones y nos permite notificarte cuando los funcionarios respondan.',
+      lblName:           'Tu nombre (opcional)',
+      namePlaceholder:   'Primer nombre o deja en blanco',
+      lblEmail:          'Correo electrÃ³nico (opcional)',
+      sendCopyLabel:     'EnvÃ­ame una copia de mi queja como confirmaciÃ³n',
+      agreeText:         'Mi queja es verÃ­dica y basada en condiciones que experimentÃ© personalmente. He leÃ­do y acepto los <a href="/terms-of-use.html" target="_blank" style="color:#ef4444;white-space:nowrap;">TÃ©rminos de Uso</a> y la <a href="/privacy-policy.html" target="_blank" style="color:#ef4444;white-space:nowrap;">PolÃ­tica de Privacidad</a>.',
+      submitBtn:         'Enviar Reporte y Notificar Funcionarios',
+    }
+  };
+
+  function setLanguage(lang) {
+    const t = i18n[lang];
+    currentLang = lang;
+
+    // Toggle button state
+    document.getElementById('langEN').classList.toggle('active', lang === 'en');
+    document.getElementById('langES').classList.toggle('active', lang === 'es');
+
+    // Section headers
+    document.getElementById('report-label').textContent     = t.reportLabel;
+    document.getElementById('report-title').textContent     = t.reportTitle;
+    document.getElementById('report-desc').innerHTML        = t.reportDesc;
+    document.getElementById('form-card-title').textContent  = t.formCardTitle;
+    document.getElementById('form-card-sub').innerHTML      = t.formCardSub;
+    document.getElementById('badge-label').innerHTML        = t.badgeLabel;
+    document.getElementById('form-required-hint').innerHTML = t.requiredHint;
+
+    // Required fields
+    document.getElementById('lbl-location').innerHTML          = t.lblLocation;
+    document.getElementById('sel-location').options[0].textContent = t.locPlaceholder;
+    document.getElementById('lbl-duration').innerHTML          = t.lblDuration;
+    const durSel = document.getElementById('sel-duration');
+    t.durOptions.forEach((text, i) => { if (durSel.options[i]) durSel.options[i].textContent = text; });
+    document.getElementById('lbl-intensity').innerHTML         = t.lblIntensity;
+    const sevSpans = document.querySelectorAll('#severity-labels span');
+    t.sevLabels.forEach((text, i) => { if (sevSpans[i]) sevSpans[i].textContent = text; });
+
+    // Details toggle â respect open/closed state
+    const toggle = document.getElementById('detailsToggle');
+    toggle.innerHTML = toggle.classList.contains('open') ? t.detailsToggleOpen : t.detailsToggleClosed;
+
+    // Optional fields
+    document.getElementById('lbl-symptoms').textContent = t.lblSymptoms;
+
+    // Checkbox text nodes
+    document.querySelectorAll('#checkbox-grid .checkbox-item').forEach((item, i) => {
+      if (!t.checkboxLabels[i]) return;
+      for (const node of item.childNodes) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+          node.textContent = ' ' + t.checkboxLabels[i];
+          break;
+        }
+      }
+    });
+
+    document.getElementById('lbl-windows').textContent = t.lblWindows;
+    const winSel = document.getElementById('sel-windows');
+    t.winOptions.forEach((text, i) => { if (winSel.options[i]) winSel.options[i].textContent = text; });
+
+    document.getElementById('lbl-children').textContent = t.lblChildren;
+    const childSel = document.getElementById('sel-children');
+    t.childOptions.forEach((text, i) => { if (childSel.options[i]) childSel.options[i].textContent = text; });
+
+    document.getElementById('lbl-describe').textContent        = t.lblDescribe;
+    document.getElementById('describe-textarea').placeholder   = t.describePlaceholder;
+    document.getElementById('form-optional-note').textContent  = t.optionalNote;
+    document.getElementById('lbl-name').textContent            = t.lblName;
+    document.getElementById('inp-name').placeholder            = t.namePlaceholder;
+    document.getElementById('lbl-email').textContent           = t.lblEmail;
+
+    // Send-copy label text node (after the checkbox input)
+    const sendCopyLabel = document.getElementById('lbl-sendcopy');
+    for (const node of sendCopyLabel.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        node.textContent = ' ' + t.sendCopyLabel;
+        break;
+      }
+    }
+
+    document.getElementById('agree-span').innerHTML   = t.agreeText;
+    document.getElementById('submitBtn').innerHTML    = t.submitBtn;
+  }
+
+  function toggleLang() {
+    setLanguage(currentLang === 'en' ? 'es' : 'en');
+  }
+
+  // ââ END LANGUAGE TOGGLE ââââââââââââââââââââââââââââââââââââââââââââââââââ
+
   // timestamp is auto-added by Google Forms
 
   function toggleDetails() {
@@ -1710,9 +1891,8 @@
     const toggle = document.getElementById('detailsToggle');
     const isOpen = section.classList.toggle('open');
     toggle.classList.toggle('open', isOpen);
-    toggle.innerHTML = isOpen
-      ? '− Hide optional details <span class="toggle-arrow" style="transform:rotate(180deg)">▾</span>'
-      : '+ Add details (symptoms, description, contact info) — optional but strengthens your report <span class="toggle-arrow">▾</span>';
+    const t = i18n[currentLang];
+    toggle.innerHTML = isOpen ? t.detailsToggleOpen : t.detailsToggleClosed;
   }
 
   function updateSeverityColor(val) {
@@ -1749,18 +1929,18 @@
   }
 
     function buildEmail(data) {
-    const loc  = data.get('entry.1490422776') || 'South San Diego';
-    const sev  = data.get('entry.907203543')  || '';
-    const dur  = data.get('entry.247287864')  || '';
-    const sym  = data.getAll('entry.1956466788');
-    const vuln = data.get('entry.871476581')  || '';
+    const loc     = data.get('entry.1490422776') || 'South San Diego';
+    const sev     = data.get('entry.907203543')  || '';
+    const dur     = data.get('entry.247287864')  || '';
+    const sym     = data.getAll('entry.1956466788');
+    const vuln    = data.get('entry.871476581')  || '';
     const name    = data.get('entry.1693083561') || 'A Concerned Resident';
     const comment = (data.get('entry.717805650') || '').trim();
 
     // Save form data for email tracking on button click
     window._savedFormData = data;
 
-    savedEmailSubject = `Sewage Complaint — ${loc} — ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
+    savedEmailSubject = `Sewage Complaint â ${loc} â ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
 
     let details = '';
     if (sev)        details += `Odor intensity: ${sev}/5\n`;
@@ -1773,7 +1953,7 @@
 I am ${name}, a resident of ${loc}. I am filing a formal complaint about an active Tijuana River sewage contamination event in my neighborhood.
 
 ${details}
-Official H2S air quality data for the Tijuana River Valley — including readings from the past 7 days — is available at the San Diego Air Pollution Control District monitoring dashboard:
+Official H2S air quality data for the Tijuana River Valley â including readings from the past 7 days â is available at the San Diego Air Pollution Control District monitoring dashboard:
 https://www.sdapcd.org/content/sdapcd/about/tj-river-valley/tjrv-air-quality-monitoring.html
 
 I am requesting:
@@ -1809,7 +1989,7 @@ Resident of ${loc}`;
     document.getElementById('yahooBtn').href = yahooUrl;
     document.getElementById('yahooBtn').onclick = () => trackEmailSent();
 
-    // Apple Mail — mailto link (mobile-only)
+    // Apple Mail â mailto link (mobile-only)
     const mailtoUrl = 'mailto:' + EMAIL_RECIPIENTS
       + '?subject=' + encodeURIComponent(savedEmailSubject)
       + '&body='    + encodeURIComponent(savedEmailBody);
@@ -1830,7 +2010,7 @@ Resident of ${loc}`;
   }
 
   // Fires a lightweight request to Apps Script when a resident clicks an email
-  // provider button — triggers the per-submission forward to direct officials.
+  // provider button â triggers the per-submission forward to direct officials.
   function trackEmailSent() {
     if (!SCRIPT_URL || !window._savedFormData) return;
     try {
@@ -1843,13 +2023,15 @@ Resident of ${loc}`;
       d.getAll('entry.1956466788').forEach(v => params.append('entry.1956466788', v));
       fetch(SCRIPT_URL + '?' + params.toString(), { mode: 'no-cors' })
         .catch(() => {});
-    } catch(err) { /* non-fatal */ }
+    } catch(err) {
+      // non-fatal â don't block the user
+    }
   }
 
   function copyLetter() {
     navigator.clipboard.writeText(savedEmailBody).then(() => {
       const btn = document.getElementById('copyBtn');
-      btn.textContent = '✓ Copied!';
+      btn.textContent = 'â Copied!';
       setTimeout(() => btn.textContent = 'Copy Letter', 2500);
     });
   }
@@ -1857,7 +2039,7 @@ Resident of ${loc}`;
   function copyRecipients() {
     navigator.clipboard.writeText(EMAIL_RECIPIENTS).then(() => {
       const btn = document.getElementById('copyRecipientsBtn');
-      btn.textContent = '✓ Copied!';
+      btn.textContent = 'â Copied!';
       setTimeout(() => btn.textContent = 'Copy Addresses', 2500);
     });
   }
@@ -1866,7 +2048,7 @@ Resident of ${loc}`;
     if (!savedEmailSubject) { alert('Please submit the form first.'); return; }
     navigator.clipboard.writeText(savedEmailSubject).then(() => {
       const btn = document.getElementById('copySubjectBtn');
-      btn.textContent = '✓ Copied!';
+      btn.textContent = 'â Copied!';
       setTimeout(() => btn.textContent = 'Copy Subject', 2500);
     });
   }
@@ -1875,7 +2057,7 @@ Resident of ${loc}`;
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.textContent = 'Sending report...';
+    btn.textContent = currentLang === 'es' ? 'Enviando reporte...' : 'Sending report...';
 
     const form = document.getElementById('complaintForm');
     const data = new FormData(form);
@@ -1916,7 +2098,7 @@ Resident of ${loc}`;
     document.getElementById('complaintForm').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
     const t = document.getElementById('stat-total');
-    if (t.textContent !== '—') t.textContent = (parseInt(t.textContent.replace(/,/g,''))||0)+1;
+    if (t.textContent !== 'â') t.textContent = (parseInt(t.textContent.replace(/,/g,''))||0)+1;
     document.getElementById('successMsg').scrollIntoView({ behavior:'smooth', block:'center' });
 
     // Auto-reset after 2 minutes so returning users can file again
@@ -1932,7 +2114,7 @@ Resident of ${loc}`;
         document.getElementById('complaintForm').style.display = 'block';
         document.getElementById('complaintForm').reset();
         document.getElementById('submitBtn').disabled = false;
-        document.getElementById('submitBtn').textContent = 'Submit Report';
+        document.getElementById('submitBtn').innerHTML = i18n[currentLang].submitBtn;
         updateSeverityColor(3);
       }
     }, 1000);
@@ -1957,9 +2139,9 @@ Resident of ${loc}`;
   loadStats();
   setInterval(loadStats, 300000);
 
-  // ── THE COST: Beach closure counters + economic damage ──────────────────
+  // ââ THE COST: Beach closure counters + economic damage ââââââââââââââââââ
 
-  // Beach closure config — last verified April 24, 2026
+  // Beach closure config â last verified April 24, 2026
   // Imperial Beach & Silver Strand: 1,000-day closure started Dec 8, 2021;
   // reopened briefly Oct 3, 2024; reclosed Nov 1, 2025 (Times of San Diego, Nov 1 2025)
   const BEACH_CLOSURES = {
@@ -1967,7 +2149,7 @@ Resident of ${loc}`;
     ss:  { elementId: 'ss-consec',  startDate: '2025-11-01' }
   };
 
-  // Economic counter — tracks from Dec 8, 2021 (start of the documented 1,000-day closure)
+  // Economic counter â tracks from Dec 8, 2021 (start of the documented 1,000-day closure)
   // Rate: $400,000/day = $4.6296.../second
   const ECON_START   = new Date('2021-12-08T00:00:00Z');
   const ECON_PER_DAY = 400000;
@@ -2000,13 +2182,14 @@ Resident of ${loc}`;
     if (!box) return;
     const isOpen = box.classList.contains('open');
     box.classList.toggle('open', !isOpen);
-    btn.textContent = isOpen ? 'How we calculate this ↓' : 'Hide methodology ↑';
+    btn.textContent = isOpen ? 'How we calculate this â' : 'Hide methodology â';
   }
 
   updateBeachCounters();
   updateEconCounter();
   setInterval(updateEconCounter, 1000);   // tick every second
   setInterval(updateBeachCounters, 60000); // refresh day counts every minute
+
 
 
 </script>
