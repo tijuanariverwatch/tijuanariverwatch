@@ -9,6 +9,7 @@ const CONFIG = {
   SHEET_ID: '1UbiTP-SThV-fbVv28LW8zjvWMUH7rURkz0VViMAzOiI',
   SHEET_NAME: 'Form Responses 1',
   SENDER_NAME: 'Tijuana River Crisis Alert System',
+  SCRIPT_URL:  'https://script.google.com/macros/s/AKfycbxFVSsB_rx3hNUZnJwpQRhTUt5Yw3uXVCpv5v_kOtR9J9c3ddBE1_bxIahTzUpaaQGf/exec',
   // All alerts are scheduled — no real-time threshold firing.
   // Set ONE time-based trigger: morningRun() → daily at 7am Pacific.
   // Triggers → Add Trigger → morningRun → Time-driven → Day timer → 7am–8am
@@ -271,7 +272,7 @@ function doGet(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
   }
-  // Unsubscribe endpoint — ?action=unsubscribe&email=...
+  // Unsubscribe endpoint — ?action=unsubscribe&email=... (media/advocacy subscribers)
   if (e && e.parameter && e.parameter.action === 'unsubscribe') {
     const email = (e.parameter.email || '').trim().toLowerCase();
     if (email) removeSubscriber(email);
@@ -281,6 +282,21 @@ function doGet(e) {
 <h1 style="color:#0b1d35;">Unsubscribed</h1>
 <p style="color:#555;">${email || 'Your email'} has been removed from the Tijuana River Watch alert list.</p>
 <p style="color:#555;">You will no longer receive media or advocacy digests. Complaint filing on the site is unaffected.</p>
+<a href="https://tijuanariverwatch.com" style="color:#0b1d35;">Return to site</a>
+</div></body></html>`;
+    return HtmlService.createHtmlOutput(html);
+  }
+
+  // Official opt-out endpoint — ?action=unsubscribe_official&email=...
+  if (e && e.parameter && e.parameter.action === 'unsubscribe_official') {
+    const email = (e.parameter.email || '').trim().toLowerCase();
+    if (email) optOutOfficial(email);
+    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Opted Out</title></head>
+<body style="font-family:Arial,sans-serif;text-align:center;padding:60px 20px;background:#f0f4f8;">
+<div style="max-width:500px;margin:0 auto;background:#fff;padding:40px;border-radius:8px;">
+<h1 style="color:#0b1d35;">Opted Out</h1>
+<p style="color:#555;">${email || 'This address'} will no longer receive individual complaint notifications from Tijuana River Watch.</p>
+<p style="color:#555;">Scheduled digest reports are managed separately. To opt out of those as well, reply to any digest email.</p>
 <a href="https://tijuanariverwatch.com" style="color:#0b1d35;">Return to site</a>
 </div></body></html>`;
     return HtmlService.createHtmlOutput(html);
@@ -736,23 +752,22 @@ function sendNightlyWindowSummary(allData, stats) {
   const subject = `Tijuana River Watch — Overnight Report: ${windowCount} Complaints (7pm–7am) — ${windowStats.date}`;
   const subjectEs = `Vigilancia del Río Tijuana — Reporte Nocturno: ${windowCount} Quejas (7pm–7am) — ${windowStats.date}`;
 
-  const body = buildNightlyBody(windowStats);
-  const bodyEs = buildNightlyBodyEs(windowStats);
-  const htmlBody = buildNightlyHtml(windowStats);
-  const htmlBodyEs = buildNightlyHtmlEs(windowStats);
-
   const recipientKeys = ['supervisor_d1', 'county_env', 'ib_mayor', 'sd_mayor', 'sd_water_board'];
   let sent = 0;
   recipientKeys.forEach(key => {
     const addr = CONFIG.officials[key];
     if (!addr || addr.startsWith('http')) return;
+    if (isOfficialOptedOut(addr)) {
+      Logger.log('Nightly summary: ' + addr + ' opted out — skipped');
+      return;
+    }
     const isMexican = MEXICAN_OFFICIALS.has(key);
     try {
       MailApp.sendEmail({
         to: addr,
         subject: isMexican ? subjectEs : subject,
-        body:    isMexican ? bodyEs    : body,
-        htmlBody: isMexican ? htmlBodyEs : htmlBody,
+        body:    isMexican ? buildNightlyBodyEs(windowStats) : buildNightlyBody(windowStats, addr),
+        htmlBody: isMexican ? buildNightlyHtmlEs(windowStats) : buildNightlyHtml(windowStats),
         name: CONFIG.SENDER_NAME,
         replyTo: 'tijuanariverwatch@gmail.com',
       });
@@ -783,13 +798,17 @@ function sendDailyDigest(stats) {
   recipientKeys.forEach(key => {
     const addr = CONFIG.officials[key];
     if (!addr || addr.startsWith('http')) return;
+    if (isOfficialOptedOut(addr)) {
+      Logger.log('Daily digest: ' + addr + ' opted out — skipped');
+      return;
+    }
     const isMexican = MEXICAN_OFFICIALS.has(key);
     try {
       MailApp.sendEmail({
         to: addr,
         subject: isMexican ? subjectEs : subject,
-        body:    isMexican ? buildDailyBodyEs(stats) : buildDailyBody(stats),
-        htmlBody: isMexican ? buildDailyHtmlEs(stats) : buildDailyHtml(stats),
+        body:    isMexican ? buildDailyBodyEs(stats) : buildDailyBody(stats, addr),
+        htmlBody: isMexican ? buildDailyHtmlEs(stats) : buildDailyHtml(stats, addr),
         name: CONFIG.SENDER_NAME,
         replyTo: 'tijuanariverwatch@gmail.com',
       });
@@ -813,7 +832,10 @@ function sendDailyDigest(stats) {
 
 // ── NIGHTLY WINDOW EMAIL BUILDERS ─────────────────────────────────────────
 
-function buildNightlyBody(ws) {
+function buildNightlyBody(ws, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe_official&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe_official`;
   return `TIJUANA RIVER WATCH — OVERNIGHT REPORT (7pm–7am)
 ${ws.date}
 tijuanariverwatch.com
@@ -837,7 +859,7 @@ WE ARE REQUESTING:
 5. Enforcement action against entities responsible for ongoing discharges.
 
 — Tijuana River Watch | tijuanariverwatch.com
-To unsubscribe, reply with REMOVE.`;
+To stop receiving these alerts: ${unsubUrl}`;
 }
 
 function buildNightlyBodyEs(ws) {
@@ -934,7 +956,10 @@ function buildNightlyHtmlEs(ws) {
 
 // ── DAILY DIGEST EMAIL BUILDERS ────────────────────────────────────────────
 
-function buildDailyBody(stats) {
+function buildDailyBody(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe_official&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe_official`;
   return `TIJUANA RIVER WATCH — DAILY REPORT
 ${stats.date}
 tijuanariverwatch.com
@@ -960,7 +985,7 @@ WE ARE REQUESTING:
 5. Enforcement action against entities responsible for ongoing discharges.
 
 — Tijuana River Watch | tijuanariverwatch.com
-To unsubscribe, reply with REMOVE.`;
+To stop receiving these alerts: ${unsubUrl}`;
 }
 
 function buildDailyBodyEs(stats) {
@@ -989,7 +1014,10 @@ SOLICITAMOS:
 — Tijuana River Watch | tijuanariverwatch.com`;
 }
 
-function buildDailyHtml(stats) {
+function buildDailyHtml(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe_official&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe_official`;
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f0f4f8;font-family:Arial,sans-serif;">
 <div style="max-width:600px;margin:0 auto;background:#fff;">
@@ -1023,6 +1051,7 @@ function buildDailyHtml(stats) {
   </div>
   <div style="padding:16px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;text-align:center;">
     <p style="font-size:11px;color:#8898b0;margin:0;">Automated daily report — Tijuana River Watch | tijuanariverwatch.com</p>
+    <p style="font-size:11px;color:#8898b0;margin:4px 0 0;"><a href="${unsubUrl}" style="color:#8898b0;">Stop receiving these alerts</a></p>
   </div>
 </div></body></html>`;
 }
@@ -1073,13 +1102,17 @@ function sendWeeklyDigest() {
   recipientKeys.forEach(key => {
     const addr = CONFIG.officials[key];
     if (!addr || addr.startsWith('http')) return;
+    if (isOfficialOptedOut(addr)) {
+      Logger.log('Weekly digest: ' + addr + ' opted out — skipped');
+      return;
+    }
     const isMexican = MEXICAN_OFFICIALS.has(key);
     try {
       MailApp.sendEmail({
         to: addr,
         subject: isMexican ? subjectEs : subject,
-        body:    isMexican ? buildDigestBodyEs(stats) : buildDigestBody(stats),
-        htmlBody: isMexican ? buildDigestHtmlEs(stats) : buildDigestHtml(stats),
+        body:    isMexican ? buildDigestBodyEs(stats) : buildDigestBody(stats, addr),
+        htmlBody: isMexican ? buildDigestHtmlEs(stats) : buildDigestHtml(stats, addr),
         name: CONFIG.SENDER_NAME,
         replyTo: 'tijuanariverwatch@gmail.com',
       });
@@ -1103,7 +1136,10 @@ function sendWeeklyDigest() {
   logAction('WEEKLY DIGEST sent to ' + sent + ' officials', stats);
 }
 
-function buildDigestBody(stats) {
+function buildDigestBody(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe_official&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe_official`;
   return `TIJUANA RIVER WATCH — WEEKLY COMPLAINT SUMMARY
 Week ending ${stats.date}
 tijuanariverwatch.com
@@ -1130,10 +1166,13 @@ WE ARE REQUESTING:
 5. Enforcement action against entities responsible for ongoing discharges.
 
 — Tijuana River Watch | tijuanariverwatch.com
-To unsubscribe from these notices, reply with REMOVE.`;
+To stop receiving these reports: ${unsubUrl}`;
 }
 
-function buildDigestHtml(stats) {
+function buildDigestHtml(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe_official&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe_official`;
   const weeklyAvg = stats.total > 0 ? (stats.total / Math.max(1, Math.ceil(stats.total / Math.max(stats.last7d, 1)))).toFixed(1) : 0;
   const trendColor = '#0b1d35';
   const trendLabel = `All-time total: ${stats.total} complaints`;
@@ -1210,8 +1249,8 @@ function buildDigestHtml(stats) {
 
   <!-- Footer -->
   <div style="padding:16px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;text-align:center;">
-    <p style="font-size:11px;color:#8898b0;margin:0;">Tijuana River Watch · tijuanariverwatch.com · Daily automated summary</p>
-    <p style="font-size:11px;color:#8898b0;margin:4px 0 0;">To unsubscribe, reply with REMOVE.</p>
+    <p style="font-size:11px;color:#8898b0;margin:0;">Tijuana River Watch · tijuanariverwatch.com · Weekly automated summary</p>
+    <p style="font-size:11px;color:#8898b0;margin:4px 0 0;"><a href="${unsubUrl}" style="color:#8898b0;">Stop receiving these reports</a></p>
   </div>
 
 </div></body></html>`;
@@ -1377,12 +1416,9 @@ function sendPerSubmissionForward(p, trigger) {
     body += '\nIN THE RESIDENT\'S OWN WORDS:\n"' + comment.trim() + '"\n';
   }
 
-  body += '\n──────────────────────────────────────────\n';
-  body += 'Filed via TijuanaRiverWatch.com\n';
-  if (email) {
-    body += 'Resident contact: ' + email + ' (replies go directly to this resident)\n';
-  }
-  body += 'To stop receiving individual complaint notifications: tijuanariverwatch@gmail.com\n';
+  const bodyPrefix = '\n──────────────────────────────────────────\n'
+    + 'Filed via TijuanaRiverWatch.com\n'
+    + (email ? 'Resident contact: ' + email + ' (replies go directly to this resident)\n' : '');
 
   // ── Send to direct regulatory officials only ──────────────────────────
   // Intentionally excludes media/advocacy — those get scheduled digests.
@@ -1392,11 +1428,17 @@ function sendPerSubmissionForward(p, trigger) {
   targets.forEach(function(key) {
     const addr = CONFIG.officials[key];
     if (!addr || addr.startsWith('http')) return;
+    if (isOfficialOptedOut(addr)) {
+      Logger.log('Per-submission forward: ' + addr + ' opted out — skipped');
+      return;
+    }
+    const unsubUrl = `${CONFIG.SCRIPT_URL}?action=unsubscribe_official&email=${encodeURIComponent(addr)}`;
+    const fullBody = body + bodyPrefix + 'To stop receiving individual complaint notifications: ' + unsubUrl + '\n';
     try {
       MailApp.sendEmail({
         to:      addr,
         subject: subject,
-        body:    body,
+        body:    fullBody,
         name:    email ? name + ' via TijuanaRiverWatch.com' : CONFIG.SENDER_NAME,
         replyTo: email || 'tijuanariverwatch@gmail.com',
       });
@@ -1565,6 +1607,39 @@ function removeSubscriber(email) {
   }
 }
 
+/**
+ * Stores an official's email in Script Properties so they stop receiving
+ * per-submission forwards. Uses a JSON array under the key 'official_opt_outs'.
+ */
+function optOutOfficial(email) {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const raw  = props.getProperty('official_opt_outs') || '[]';
+    const list = JSON.parse(raw);
+    if (!list.includes(email)) {
+      list.push(email);
+      props.setProperty('official_opt_outs', JSON.stringify(list));
+      Logger.log('Official opted out: ' + email);
+    }
+  } catch(err) {
+    Logger.log('optOutOfficial error: ' + err);
+  }
+}
+
+/**
+ * Returns true if the given email address has opted out of official notifications.
+ */
+function isOfficialOptedOut(email) {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const raw  = props.getProperty('official_opt_outs') || '[]';
+    const list = JSON.parse(raw);
+    return list.includes(email.toLowerCase());
+  } catch(err) {
+    return false;
+  }
+}
+
 function sendSubscribeConfirmation(name, org, email, type) {
   const typeLabel  = type === 'ADVOCACY' ? 'advocacy organization' : 'media';
   const schedule   = type === 'ADVOCACY' ? 'twice weekly (Monday and Thursday)' : 'weekly (every Monday)';
@@ -1622,13 +1697,17 @@ function sendMediaWeeklyDigest(stats) {
   const allAddrs = [...new Set([...staticAddrs, ...subAddrs])];
 
   const subject = `Data Tip: ${stats.last7d} Sewage Complaints Filed in South SD This Week — Tijuana River Watch`;
-  const body = buildMediaDigestBody(stats);
-  const htmlBody = buildMediaDigestHtml(stats);
 
   let sent = 0;
   allAddrs.forEach(addr => {
     try {
-      MailApp.sendEmail({ to: addr, subject, body, htmlBody, name: CONFIG.SENDER_NAME, replyTo: 'tijuanariverwatch@gmail.com' });
+      MailApp.sendEmail({
+        to: addr, subject,
+        body: buildMediaDigestBody(stats, addr),
+        htmlBody: buildMediaDigestHtml(stats, addr),
+        name: CONFIG.SENDER_NAME,
+        replyTo: 'tijuanariverwatch@gmail.com'
+      });
       sent++;
       Utilities.sleep(500);
     } catch(err) { Logger.log('Media digest error for ' + addr + ': ' + err); }
@@ -1637,8 +1716,10 @@ function sendMediaWeeklyDigest(stats) {
   logAction(`MEDIA WEEKLY DIGEST sent to ${sent} contacts (${stats.last7d} complaints this week)`, stats);
 }
 
-function buildMediaDigestBody(stats) {
-  const unsubUrl = 'https://tijuanariverwatch.com/subscribe?action=unsubscribe';
+function buildMediaDigestBody(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe`;
   return `TIJUANA RIVER WATCH — WEEKLY DATA SUMMARY
 Week ending ${stats.date}
 tijuanariverwatch.com
@@ -1663,8 +1744,10 @@ For more information or to request data access, reply to this email.
 To unsubscribe: ${unsubUrl}`;
 }
 
-function buildMediaDigestHtml(stats) {
-  const unsubUrl = 'https://tijuanariverwatch.com/subscribe?action=unsubscribe';
+function buildMediaDigestHtml(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe`;
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f0f4f8;font-family:Arial,sans-serif;">
 <div style="max-width:600px;margin:0 auto;background:#fff;">
@@ -1747,8 +1830,8 @@ function sendAdvocacyUpdate(stats) {
       MailApp.sendEmail({
         to: addr,
         subject,
-        body: buildAdvocacyBody(stats, newSinceLast),
-        htmlBody: buildAdvocacyHtml(stats, newSinceLast),
+        body: buildAdvocacyBody(stats, newSinceLast, addr),
+        htmlBody: buildAdvocacyHtml(stats, newSinceLast, addr),
         name: CONFIG.SENDER_NAME,
         replyTo: 'tijuanariverwatch@gmail.com'
       });
@@ -1762,8 +1845,10 @@ function sendAdvocacyUpdate(stats) {
   logAction(`ADVOCACY UPDATE sent to ${sent} contacts (${newSinceLast} new complaints)`, stats);
 }
 
-function buildAdvocacyBody(stats, newSinceLast) {
-  const unsubUrl = 'https://tijuanariverwatch.com/subscribe?action=unsubscribe';
+function buildAdvocacyBody(stats, newSinceLast, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe`;
   return `TIJUANA RIVER WATCH — ADVOCACY UPDATE
 ${stats.date} · tijuanariverwatch.com
 ${'─'.repeat(50)}
@@ -1789,8 +1874,10 @@ DATA & MEDIA:
 To unsubscribe: ${unsubUrl}`;
 }
 
-function buildAdvocacyHtml(stats, newSinceLast) {
-  const unsubUrl = 'https://tijuanariverwatch.com/subscribe?action=unsubscribe';
+function buildAdvocacyHtml(stats, newSinceLast, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe`;
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f0f4f8;font-family:Arial,sans-serif;">
 <div style="max-width:600px;margin:0 auto;background:#fff;">
@@ -1864,13 +1951,17 @@ function checkAndSendSpikeAlert(stats) {
   const allAddrs = [...new Set([...mediaAddrs, ...advocacyAddrs])];
 
   const subject = `[SPIKE ALERT] ${stats.last24h} Sewage Complaints in 24 Hours — Tijuana River — ${stats.date}`;
-  const body = buildSpikeAlertBody(stats);
-  const htmlBody = buildSpikeAlertHtml(stats);
 
   let sent = 0;
   allAddrs.forEach(addr => {
     try {
-      MailApp.sendEmail({ to: addr, subject, body, htmlBody, name: CONFIG.SENDER_NAME, replyTo: 'tijuanariverwatch@gmail.com' });
+      MailApp.sendEmail({
+        to: addr, subject,
+        body: buildSpikeAlertBody(stats, addr),
+        htmlBody: buildSpikeAlertHtml(stats, addr),
+        name: CONFIG.SENDER_NAME,
+        replyTo: 'tijuanariverwatch@gmail.com'
+      });
       sent++;
       Utilities.sleep(500);
     } catch(err) { Logger.log('Spike alert error for ' + addr + ': ' + err); }
@@ -1880,8 +1971,10 @@ function checkAndSendSpikeAlert(stats) {
   logAction(`SPIKE ALERT sent to ${sent} contacts (${stats.last24h} complaints in 24h)`, stats);
 }
 
-function buildSpikeAlertBody(stats) {
-  const unsubUrl = 'https://tijuanariverwatch.com/subscribe?action=unsubscribe';
+function buildSpikeAlertBody(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe`;
   return `[SPIKE ALERT] TIJUANA RIVER WATCH
 ${stats.date} · tijuanariverwatch.com
 ${'─'.repeat(50)}
@@ -1906,8 +1999,10 @@ Raw data available on request — reply to this email.
 To unsubscribe: ${unsubUrl}`;
 }
 
-function buildSpikeAlertHtml(stats) {
-  const unsubUrl = 'https://tijuanariverwatch.com/subscribe?action=unsubscribe';
+function buildSpikeAlertHtml(stats, addr) {
+  const unsubUrl = addr
+    ? `${CONFIG.SCRIPT_URL}?action=unsubscribe&email=${encodeURIComponent(addr)}`
+    : `${CONFIG.SCRIPT_URL}?action=unsubscribe`;
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f0f4f8;font-family:Arial,sans-serif;">
 <div style="max-width:600px;margin:0 auto;background:#fff;">
