@@ -1,0 +1,20 @@
+name: Add satellite map image
+on:
+  workflow_dispatch:
+
+jobs:
+  add-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add satellite map image
+        run: |
+          mkdir -p assets/images
+          curl -sL "https://paste.rs/9u4zo" | base64 -d > assets/images/satellite-map.jpg
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+          git add assets/images/satellite-map.jpg
+          git commit -m "Add satellite map hero image"
+          git push
