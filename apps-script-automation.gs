@@ -1331,6 +1331,7 @@ function sendPerSubmissionForward(p, trigger) {
   const vuln    = get('entry.871476581')  || '';
   const name    = get('entry.1693083561') || 'Anonymous';
   const comment = get('entry.717805650')  || '';
+  const email   = get('entry.30396298')   || '';
 
   // ── Rate limiting ─────────────────────────────────────────────────────
   const props     = PropertiesService.getScriptProperties();
@@ -1378,6 +1379,9 @@ function sendPerSubmissionForward(p, trigger) {
 
   body += '\n──────────────────────────────────────────\n';
   body += 'Filed via TijuanaRiverWatch.com\n';
+  if (email) {
+    body += 'Resident contact: ' + email + ' (replies go directly to this resident)\n';
+  }
   body += 'To stop receiving individual complaint notifications: tijuanariverwatch@gmail.com\n';
 
   // ── Send to direct regulatory officials only ──────────────────────────
@@ -1393,8 +1397,8 @@ function sendPerSubmissionForward(p, trigger) {
         to:      addr,
         subject: subject,
         body:    body,
-        name:    CONFIG.SENDER_NAME,
-        replyTo: 'tijuanariverwatch@gmail.com',
+        name:    email ? name + ' via TijuanaRiverWatch.com' : CONFIG.SENDER_NAME,
+        replyTo: email || 'tijuanariverwatch@gmail.com',
       });
       sent++;
       Utilities.sleep(350);
