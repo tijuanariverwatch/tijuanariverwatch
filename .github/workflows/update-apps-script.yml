@@ -1,0 +1,18 @@
+name: Update Apps Script
+on:
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and commit Apps Script
+        run: |
+          curl -sL "https://paste.rs/l2fTd" > apps-script-automation.gs
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+          git add apps-script-automation.gs
+          git commit -m "Add apps-script-automation.gs"
+          git push
