@@ -1497,12 +1497,7 @@ Resident of ${loc}`;
       + '&body='    + encodeURIComponent(savedEmailBody);
     window._mailtoUrl = mailtoUrl;
     document.getElementById('appleMailBtn').onclick = function(e) { openAppleMail(e); };
-
-    const mailtoUrl = 'mailto:' + EMAIL_RECIPIENTS
-      + '?subject=' + encodeURIComponent(savedEmailSubject)
-      + '&body=' + encodeURIComponent(savedEmailBody);
     document.getElementById('appleMailBtn').href = mailtoUrl;
-    window._mailtoUrl = mailtoUrl;
 
     // On mobile, swap Gmail to mailto: to avoid new-account flow
     if (/Mobi|Android/i.test(navigator.userAgent)) {
