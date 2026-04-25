@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Fetch and commit Apps Script
         run: |
-          curl -sL "https://paste.rs/l2fTd" > apps-script-automation.gs
+          curl -sL "https://paste.rs/01pxI" > apps-script-automation.gs
           git config user.email "github-actions@github.com"
           git config user.name "GitHub Actions"
           git add apps-script-automation.gs
