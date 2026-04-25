@@ -1612,27 +1612,15 @@ Resident of ${loc}`;
   const SHEET_NAME = 'Form Responses 1';
 
   async function loadStats() {
-    if (SHEET_ID === 'REPLACE_WITH_YOUR_GOOGLE_SHEET_ID') return;
     try {
-      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+      const url = SCRIPT_URL + '?action=stats';
       const res = await fetch(url);
-      const text = await res.text();
-      const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
-      const rows = json.table.rows || [];
-      const now = Date.now();
-      function parseGvizDate(v) {
-        if (!v) return null;
-        // gviz returns "Date(2026,3,20,10,30,0)" — month is 0-indexed
-        const m = String(v).match(/Date\((\d+),(\d+),(\d+),(\d+),(\d+),(\d+)\)/);
-        if (m) return new Date(+m[1], +m[2], +m[3], +m[4], +m[5], +m[6]).getTime();
-        return new Date(v).getTime();
-      }
-      const twelveH = rows.filter(r => { try { const t = parseGvizDate(r.c[0]?.v); return t && t > now - 43200000; } catch(e){ return false; } }).length;
-      const sevenD  = rows.filter(r => { try { const t = parseGvizDate(r.c[0]?.v); return t && t > now - 604800000; } catch(e){ return false; } }).length;
-      document.getElementById('stat-total').textContent   = rows.length.toLocaleString();
-      document.getElementById('stat-week').textContent    = sevenD;
-      document.getElementById('stat-tonight').textContent = twelveH;
-      document.getElementById('tonight-badge').textContent = twelveH;
+      const data = await res.json();
+      if (data.status !== 'ok') return;
+      document.getElementById('stat-total').textContent   = (data.total  || 0).toLocaleString();
+      document.getElementById('stat-week').textContent    = data.last7d  || 0;
+      document.getElementById('stat-tonight').textContent = data.last12h || 0;
+      document.getElementById('tonight-badge').textContent = data.last12h || 0;
     } catch(err) { console.log('Stats error:', err); }
   }
 
