@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media &amp; Advocacy Alerts — Tijuana River Watch</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXFW99ET2Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GXFW99ET2Z');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:      #111111;
+      --ink2:     #333333;
+      --ink3:     #555555;
+      --red:      #991b1b;
+      --red2:     #b91c1c;
+      --red3:     #dc2626;
+      --red-bg:   #fef2f2;
+      --red-border: #fecaca;
+      --white:    #ffffff;
+      --off-white:#f7f7f5;
+      --gray1:    #f0f0ee;
+      --gray2:    #e0e0dd;
+      --gray3:    #aaaaaa;
+      --navy:     #0b1d35;
+      --nav-bg:   #1a1a1a;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--nav-bg);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand { color: #fff; font-weight: 800; font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red3); display: inline-block; animation: pulse 1.8s infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: #ccc; font-size: 0.85rem; text-decoration: none; transition: color .15s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { background: var(--red2); color: #fff; font-size: 0.82rem; font-weight: 700; padding: 7px 16px; border-radius: 5px; text-decoration: none; white-space: nowrap; transition: background .15s; }
+    .nav-cta:hover { background: var(--red3); }
+    @media (max-width: 660px) { .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 64px 24px 56px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--red3);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
+    .hero p { font-size: 1rem; color: #a8c0d8; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+    /* ── MAIN LAYOUT ── */
+    .page-wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* ── WHAT YOU GET ── */
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 48px; }
+    @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+    .card {
+      background: #fff;
+      border: 1px solid var(--gray2);
+      border-radius: 10px;
+      padding: 28px 24px;
+    }
+    .card-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .card-badge.media { background: #dbeafe; color: #1d4ed8; }
+    .card-badge.advocacy { background: #dcfce7; color: #15803d; }
+    .card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 10px; color: var(--navy); }
+    .card p { font-size: 0.87rem; color: var(--ink3); line-height: 1.65; }
+    .card ul { font-size: 0.85rem; color: var(--ink3); line-height: 1.8; padding-left: 18px; margin-top: 10px; }
+
+    /* ── FORM ── */
+    .form-wrap {
+      background: #fff;
+      border: 1px solid var(--gray2);
+      border-radius: 12px;
+      padding: 36px 32px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .form-wrap h2 { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+    .form-wrap .form-sub { font-size: 0.85rem; color: var(--ink3); margin-bottom: 28px; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--ink2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .field input, .field select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--gray2);
+      border-radius: 7px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--ink);
+      background: var(--off-white);
+      transition: border-color .15s;
+      outline: none;
+    }
+    .field input:focus, .field select:focus { border-color: var(--navy); background: #fff; }
+    .field .hint { font-size: 0.75rem; color: var(--gray3); margin-top: 5px; }
+
+    /* Type toggle */
+    .type-toggle { display: flex; gap: 12px; margin-bottom: 20px; }
+    .type-btn {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid var(--gray2);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      background: #fff;
+      color: var(--ink3);
+      transition: all .15s;
+    }
+    .type-btn.active.media { border-color: #1d4ed8; background: #dbeafe; color: #1d4ed8; }
+    .type-btn.active.advocacy { border-color: #15803d; background: #dcfce7; color: #15803d; }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s;
+      font-family: inherit;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { background: var(--red2); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Status messages */
+    .status { display: none; margin-top: 18px; padding: 14px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
+    .status.success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; display: block; }
+    .status.error { background: var(--red-bg); color: var(--red2); border: 1px solid var(--red-border); display: block; }
+
+    /* ── NOT FOR RESIDENTS ── */
+    .note-box {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      color: #92400e;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .note-box strong { color: #78350f; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--nav-bg);
+      color: #888;
+      text-align: center;
+      padding: 28px 24px;
+    }
+    footer p { font-size: 0.78rem; line-height: 1.8; }
+    footer a { color: #aaa; text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">
+    <span class="pulse-dot"></span>
+    Tijuana River Crisis Alert
+  </a>
+  <div class="nav-links">
+    <a href="/#report">Report</a>
+    <a href="/#air-quality">Air Quality Data</a>
+    <a href="/#how-it-works">How It Works</a>
+    <a href="/#officials">Officials</a>
+    <a href="/about.html">About</a>
+    <a href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">Blog</a>
+  </div>
+  <a href="/#report" class="nav-cta">File a Report</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">Media &amp; Advocacy</div>
+  <h1>Stay Informed on the Crisis</h1>
+  <p>Journalists and advocacy organizations can subscribe to receive automated data summaries from the Tijuana River Watch complaint system.</p>
+</div>
+
+<div class="page-wrap">
+
+  <!-- Important note -->
+  <div class="note-box">
+    <strong>This page is for reporters and advocacy organizations only.</strong> If you're a resident who wants to file a complaint about sewage odors, <a href="/" style="color:#92400e;font-weight:700;">go here instead</a>. Filing complaints is free and requires no account or signup.
+  </div>
+
+  <!-- What you get -->
+  <div class="cards">
+    <div class="card">
+      <span class="card-badge media">Media</span>
+      <h3>Weekly Press Data Summary</h3>
+      <p>Every Monday: a clean data summary of the past 7 days — complaint counts, affected areas, severity, and symptom breakdown. Plus:</p>
+      <ul>
+        <li>Immediate spike alerts when 100+ complaints are filed in 24 hours</li>
+        <li>Raw dataset available on request</li>
+        <li>No spin — numbers only</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-badge advocacy">Advocacy Orgs</span>
+      <h3>Twice-Weekly Action Updates</h3>
+      <p>Monday and Thursday: complaint totals, new filings since last update, and affected community data to support your advocacy work. Plus:</p>
+      <ul>
+        <li>Immediate spike alerts when 100+ complaints are filed in 24 hours</li>
+        <li>Consistent data to back legislative asks and press outreach</li>
+        <li>Unsubscribe any time</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="form-wrap">
+    <h2>Subscribe to Alerts</h2>
+    <p class="form-sub">For journalists and staff at environmental advocacy organizations. We'll never share your email or add you to unrelated lists.</p>
+
+    <form id="subscribeForm" onsubmit="handleSubscribe(event)">
+
+      <p style="font-size:0.8rem;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">I am a...</p>
+      <div class="type-toggle">
+        <div class="type-btn media active" id="btnMedia" onclick="selectType('MEDIA')">Reporter / Journalist</div>
+        <div class="type-btn advocacy" id="btnAdvocacy" onclick="selectType('ADVOCACY')">Advocacy Organization</div>
+      </div>
+      <input type="hidden" id="subType" value="MEDIA">
+
+      <div class="field">
+        <label for="subName">Your Name</label>
+        <input type="text" id="subName" placeholder="Jane Smith" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="subOrg">Organization / Outlet</label>
+        <input type="text" id="subOrg" placeholder="KPBS, Surfrider Foundation, etc." autocomplete="organization">
+        <div class="hint">Leave blank if independent.</div>
+      </div>
+
+      <div class="field">
+        <label for="subEmail">Work Email *</label>
+        <input type="email" id="subEmail" placeholder="you@outlet.com" required autocomplete="email">
+        <div class="hint">We send alerts to this address. Unsubscribe link included in every email.</div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Subscribe</button>
+
+      <div class="status" id="statusMsg"></div>
+    </form>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p><strong>Tijuana River Crisis Alert System</strong> — Built by and for residents of Imperial Beach, Coronado, San Ysidro, San Diego, and Chula Vista.</p>
+  <p style="margin-top:6px;"><a href="/about.html">About</a> · <a href="/blog/2026-04-24-san-diego-air-quality-most-polluted.html">SD Air Quality Report</a> · <a href="/blog/why-we-built-this.html">Why We Built This</a> · <a href="/contact.html">Contact</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms-of-use.html">Terms of Use</a> · &copy; 2026 Tijuana River Watch</p>
+</footer>
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxFVSsB_rx3hNUZnJwpQRhTUt5Yw3uXVCpv5v_kOtR9J9c3ddBE1_bxIahTzUpaaQGf/exec';
+
+  function selectType(type) {
+    document.getElementById('subType').value = type;
+    document.getElementById('btnMedia').className    = 'type-btn media'    + (type === 'MEDIA'    ? ' active' : '');
+    document.getElementById('btnAdvocacy').className = 'type-btn advocacy' + (type === 'ADVOCACY' ? ' active' : '');
+  }
+
+  // Handle unsubscribe via URL param
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('action') === 'unsubscribe') {
+      const email = params.get('email') || '';
+      const form = document.getElementById('subscribeForm');
+      if (form) {
+        form.innerHTML = `
+          <div style="text-align:center;padding:20px 0;">
+            <div style="font-size:2rem;margin-bottom:12px;">✓</div>
+            <h3 style="font-size:1.1rem;color:var(--navy);margin-bottom:8px;">Unsubscribed</h3>
+            <p style="font-size:0.9rem;color:var(--ink3);">${email ? '<strong>' + email + '</strong> has been' : 'You have been'} removed from the alert list.</p>
+            <p style="font-size:0.85rem;color:var(--ink3);margin-top:12px;">Complaint filing on the main site is completely unaffected.</p>
+            <a href="/" style="display:inline-block;margin-top:20px;color:var(--navy);font-weight:700;font-size:0.9rem;">← Back to site</a>
+          </div>`;
+        // Also ping the Apps Script to mark unsubscribed
+        if (email) {
+          fetch(SCRIPT_URL + '?action=unsubscribe&email=' + encodeURIComponent(email), { mode: 'no-cors' }).catch(() => {});
+        }
+      }
+    }
+  })();
+
+  async function handleSubscribe(e) {
+    e.preventDefault();
+    const name  = document.getElementById('subName').value.trim();
+    const org   = document.getElementById('subOrg').value.trim();
+    const email = document.getElementById('subEmail').value.trim();
+    const type  = document.getElementById('subType').value;
+
+    if (!email) { showStatus('Please enter your email address.', false); return; }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Subscribing…';
+
+    try {
+      const data = new FormData();
+      data.append('action',    'subscribe');
+      data.append('sub_name',  name);
+      data.append('sub_org',   org);
+      data.append('sub_email', email);
+      data.append('sub_type',  type);
+
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data });
+      showStatus('You\'re subscribed! Check your email for a confirmation.', true);
+      document.getElementById('subscribeForm').reset();
+      selectType('MEDIA');
+    } catch(err) {
+      showStatus('Something went wrong. Please try again or email tijuanariverwatch@gmail.com.', false);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+    }
+  }
+
+  function showStatus(msg, success) {
+    const el = document.getElementById('statusMsg');
+    el.textContent = msg;
+    el.className = 'status ' + (success ? 'success' : 'error');
+  }
+</script>
+
+</body>
+</html>
